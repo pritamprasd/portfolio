@@ -1,1 +1,0 @@
-export const PROFILE_PICTURE = require('./dp.jpg');
