@@ -15,5 +15,4 @@ body::-webkit-scrollbar-thumb {
 ```
 
 ## links:
-- Icons: https://uxwing.com/headphone-icon/
 - 
