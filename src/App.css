@@ -1,10 +1,11 @@
 :root {
     font-size: 16px;
-    font-family: "Open Sans";
+    font-family: 'Roboto', sans-serif;
     --text-primary: #b6b6b6;
     --text-secondary: #ececec;
     --bg-primary: #23232e;
     --bg-secondary: #141418;
+    --transition-speed: 600ms;
 }
 
 body {
@@ -12,10 +13,6 @@ body {
     background-color: white;
     margin: 0;
     padding: 0;
-}
-
-main {
-    margin-left: 5rem;
 }
 
 body::-webkit-scrollbar {
@@ -30,9 +27,9 @@ body::-webkit-scrollbar-thumb {
     background: #6649b8;
 }
 
-.navbar {
-    width: 5rem;
-    height: 100vh;
-    position: fixed;
-    background-color: var(--bg-primary);
+.app {
+    display: grid;
+    grid-template-columns: 5rem auto;
+    grid-template-rows: 1fr 29fr;
+    grid-template-areas: "sidebar  banner" "sidebar  main-area";
 }

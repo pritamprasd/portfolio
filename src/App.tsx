@@ -1,14 +1,15 @@
 import React from 'react';
 import './App.css';
+import Banner from './components/banner/Banner';
+import NavBar from './components/navbar/NavBar';
 import Main from './containers/Main';
 
 function App() {
   return (
-    <div className="App">
-      <nav className="navbar"></nav>
-      <main>
-        <Main />
-      </main>
+    <div className="app">
+      <Banner/>
+      <NavBar/>
+      <Main />
     </div >
   );
 }

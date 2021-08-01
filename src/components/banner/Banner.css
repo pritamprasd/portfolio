@@ -1,0 +1,9 @@
+@import url("../../App.css");
+.banner {
+    grid-area: banner;
+    display: flex;
+    font-size: xx-large;
+    flex-direction: column;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
