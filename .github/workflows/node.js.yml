@@ -41,6 +41,6 @@ jobs:
       with:
         timeZone: 8
         format: 'YYYY-MM-DD-HH-mm-ss'
-    - run: cd temp/pritamprasd.github.io && git commit -m "Automated commit by portfolio Github Actions, $TIME"
+    - run: cd temp/pritamprasd.github.io && git commit -am "Automated commit by portfolio Github Actions, $TIME"
       env:
         TIME: "${{ steps.time.outputs.time }}"
