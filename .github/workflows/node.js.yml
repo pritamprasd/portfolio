@@ -30,7 +30,7 @@ jobs:
     - run: ls -la 
     - run: pwd
     - run: mkdir temp
-    - run: cd temp && git clone https://github.com/pritamprasd/pritamprasd.github.io.git
+    - run: cd temp && git clone https://github.com/pritamprasd/pritamprasd.github.io.git && git checkout -b auto_commit_$(date +%s)
     - run: cd temp/pritamprasd.github.io && rm -rf *.js *.html *.css
     - run: cp -R ./dist/ ./temp/pritamprasd.github.io
     - run: git config --global user.email "<>"
@@ -44,3 +44,4 @@ jobs:
     - run: cd temp/pritamprasd.github.io && git commit -am "Automated commit by portfolio Github Actions, $TIME"
       env:
         TIME: "${{ steps.time.outputs.time }}"
+    - run: git push origin
