@@ -27,3 +27,18 @@ jobs:
     - run: npm install yarn
     - run: yarn
     - run: yarn webpack
+    - run: mkdir temp
+    - run: cd temp
+    - run: git clone https://github.com/pritamprasd/pritamprasd.github.io.git
+    - run: cd pritamprasd.github.io
+    - run: rm -rf *.*
+    - run: cp -R ../../dist/ ./
+    - name: Get Time
+      id: time
+      uses: nanzm/get-time-action@v1.1
+      with:
+        timeZone: 8
+        format: 'YYYY-MM-DD-HH-mm-ss'
+    - run: git commit -m "Automated commit by portfolio Github Actions, $TIME"
+      env:
+        TIME: "${{ steps.time.outputs.time }}"
