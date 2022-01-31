@@ -30,6 +30,20 @@ jobs:
     - run: ls -la 
     - run: pwd
     - run: mkdir temp
+    - name: Decrypt secrets
+      env:
+        ENCRYPTION_KEY: ${{ secrets.ENCRYPTION_KEY }}
+      run: |
+        openssl aes-256-cbc -in .github/workflows/secrets/id_rsa.enc -out .github/workflows/secrets/id_rsa -pass pass:$ENCRYPTION_KEY -d -md sha1
+    - name: Setup SSH agent
+      env:
+        SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+      run: |
+        mkdir -p ~/.ssh
+        ssh-keyscan github.com >> ~/.ssh/known_hosts
+        ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+        chmod 0600 .github/workflows/secrets/id_rsa
+        ssh-add .github/workflows/secrets/id_rsa
     - run: cd temp && git clone git@github.com:pritamprasd/pritamprasd.github.io.git && cd pritamprasd.github.io && git checkout -b auto_commit_$(date +%s) && git status
     - run: cd temp/pritamprasd.github.io && rm -rf *.js *.html *.css
     - run: cp -R ./dist/ ./temp/pritamprasd.github.io
