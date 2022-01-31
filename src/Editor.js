@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import * as monaco from 'monaco-editor';
 
 // @ts-ignore
@@ -19,16 +19,23 @@ self.MonacoEnvironment = {
 
 export const Editor = () => {
     const divEl = useRef(null);
+    const [code, setCode] = useState(localStorage.getItem('code'))
     let editor = null;
     useEffect(() => {
         if (divEl.current) {
             editor = monaco.editor.create(divEl.current, {
-                value: ['function x() {', '\tconsole.log("Hello world!");', '}'].join('\n'),
-                language: 'typescript'
+                value: code,
+                language: 'python'
             });
+            editor.onKeyDown(() => {
+                const code_local = editor.getValue()
+                console.log("Val: "+ code_local)
+                setCode(code_local)
+                localStorage.setItem('code', code_local)
+            })
         }
         return () => {
-            editor && editor.dispose();
+            editor.dispose();
         };
     }, []);
     return (
