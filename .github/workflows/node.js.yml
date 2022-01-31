@@ -30,21 +30,15 @@ jobs:
     - run: ls -la 
     - run: pwd
     - run: mkdir temp
-    - run: cd temp
-    - run: git clone https://github.com/pritamprasd/pritamprasd.github.io.git
-    - run: cd pritamprasd.github.io
-    - run: ls -la 
-    - run: pwd
-    - run: rm -rf *.*
-    - run: ls -la 
-    - run: pwd
-    - run: cp -R ../dist/ ./
+    - run: cd temp && git clone https://github.com/pritamprasd/pritamprasd.github.io.git
+    - run: cd temp/pritamprasd.github.io && rm -rf *.js *.html *.css
+    - run: cp -R ./dist/ ./temp/pritamprasd.github.io
     - name: Get Time
       id: time
       uses: nanzm/get-time-action@v1.1
       with:
         timeZone: 8
         format: 'YYYY-MM-DD-HH-mm-ss'
-    - run: git commit -m "Automated commit by portfolio Github Actions, $TIME"
+    - run: cd temp/pritamprasd.github.io && git commit -m "Automated commit by portfolio Github Actions, $TIME"
       env:
         TIME: "${{ steps.time.outputs.time }}"
