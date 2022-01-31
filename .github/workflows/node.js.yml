@@ -44,4 +44,4 @@ jobs:
     - run: cd temp/pritamprasd.github.io && git commit -am "Automated commit by portfolio Github Actions, $TIME"
       env:
         TIME: "${{ steps.time.outputs.time }}"
-    - run: git push --set-upstream origin auto_commit_$(date +%s)
+    - run: cd temp/pritamprasd.github.io && git push --set-upstream origin auto_commit_$(date +%s)
