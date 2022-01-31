@@ -32,8 +32,8 @@ jobs:
     - run: git clone https://github.com/pritamprasd/pritamprasd.github.io.git
     - run: cd pritamprasd.github.io
     - run: rm -rf *.*
-    - run: ls -la ../../
-    - run: cp -R ../../dist/ ./
+    - run: ls -la ../
+    - run: cp -R ../dist/ ./
     - name: Get Time
       id: time
       uses: nanzm/get-time-action@v1.1
