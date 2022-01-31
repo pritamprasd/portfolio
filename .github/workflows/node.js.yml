@@ -33,6 +33,8 @@ jobs:
     - run: cd temp && git clone https://github.com/pritamprasd/pritamprasd.github.io.git
     - run: cd temp/pritamprasd.github.io && rm -rf *.js *.html *.css
     - run: cp -R ./dist/ ./temp/pritamprasd.github.io
+    - run: git config --global user.email "<>"
+    - run: git config --global user.name "Github Portfolio Bot"
     - name: Get Time
       id: time
       uses: nanzm/get-time-action@v1.1
