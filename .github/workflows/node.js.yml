@@ -31,7 +31,7 @@ jobs:
     - run: pwd
     - run: mkdir temp
     - run: export branch_name=$(date +%s)
-    - run: cd temp && git clone https://github.com/pritamprasd/pritamprasd.github.io.git && git checkout -b $branch_name && git status
+    - run: cd temp && git clone https://github.com/pritamprasd/pritamprasd.github.io.git && git checkout -b $(branch_name) && git status
     - run: cd temp/pritamprasd.github.io && rm -rf *.js *.html *.css
     - run: cp -R ./dist/ ./temp/pritamprasd.github.io
     - run: git config --global user.email "<>"
@@ -45,4 +45,4 @@ jobs:
     - run: cd temp/pritamprasd.github.io && git commit -am "Automated commit by portfolio Github Actions, $TIME"
       env:
         TIME: "${{ steps.time.outputs.time }}"
-    - run: git push --set-upstream origin $branch_name
+    - run: git push --set-upstream origin $(branch_name)
