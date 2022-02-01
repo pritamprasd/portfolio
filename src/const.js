@@ -33,3 +33,9 @@ export const languages = [
     'typescript',
     'xml'
 ]
+
+export const themes = [
+    "vs",
+    "vs-dark",
+    "hc-black"
+]
