@@ -1,24 +1,25 @@
 import React, { useRef, useEffect, useState } from 'react';
 import * as monaco from 'monaco-editor';
-import { addNewCodeFile } from './db'; 
-import { FileList } from './filelist.jsx'
+import { addNewCodeFile } from './db';
+import { FileList } from './filelist'
+import { languages } from './const';
 
 export const Editor = () => {
     const divEl = useRef(null);
     const [filename, setFilename] = useState('')
+    const [editorLang, setEditorLang] = useState(languages[0])
     const [editorInstance, setEditorInstance] = useState({})
     const [code, setCode] = useState(localStorage.getItem('code'))
     let editor = null;
     useEffect(() => {
         if (divEl.current) {
+            console.log('Reruning... effect')
             editor = monaco.editor.create(divEl.current, {
                 value: code,
-                language: 'python'
+                language: editorLang
             });
-            
             editor.onKeyDown(() => {
                 const code_local = editor.getValue()
-                console.log("Val: " + code_local)
                 setCode(code_local)
                 localStorage.setItem('code', code_local)
             })
@@ -27,21 +28,27 @@ export const Editor = () => {
         return () => {
             editor.dispose();
         };
-    }, []);
+    }, [editorLang]);
 
-    function saveCodeFile(){
+    function saveCodeFile() {
         addNewCodeFile(filename, code);
     }
-    function updateCode(){
+    function updateCode() {
         setCode(localStorage.getItem('code'));
         editorInstance.setValue(localStorage.getItem('code'));
+    }
+    function onLangChange(e) {
+        setEditorLang(e.target.value);
     }
     return (
         <div>
             <div className="Editor" ref={divEl}> </div>
+            <select onClick={onLangChange}>
+                {languages.map(l => <option value={l}>{l}</option>)}
+            </select>
             <input type="text" value={filename} onChange={(e) => setFilename(e.target.value)}></input>
             <button onClick={saveCodeFile}>Save</button>
-            <FileList updateCode={updateCode}/>
+            <FileList updateCode={updateCode} />
         </div>
     );
 };
