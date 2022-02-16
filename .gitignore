@@ -1,7 +1,0 @@
-**/build/
-**/node_modules/
-**/dist/
-.DS_Store
-.github/workflows/secrets/id_rsa
-.github/workflows/secrets/id_rsa.pub
-yarn-error.log
