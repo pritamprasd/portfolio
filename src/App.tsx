@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { AppShell, Burger, Header, MediaQuery, Navbar, Text, useMantineTheme } from '@mantine/core';
+import { AppShell, Burger, Header, MediaQuery, Navbar, Text, ThemeIcon, Title, useMantineTheme } from '@mantine/core';
+import AppHeader from './header/AppHeader';
 
 function App() {
   const [opened, setOpened] = useState(false);
@@ -14,7 +15,7 @@ function App() {
           padding="md"
           hiddenBreakpoint="sm"
           hidden={!opened}
-          width={{ sm: 300, lg: 400 }}
+          width={{ sm: 250, lg: 300 }}
         >
           <Text>Application navbar</Text>
           <Text>Application navbar</Text>
@@ -23,7 +24,7 @@ function App() {
       }
       header={
         <Header height={70} padding="md">
-          <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
+          <div style={{ display: 'flex', alignItems: 'flex-end', height: '100%', flexDirection:'row' , justifyContent: 'space-between'}}>
             <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
               <Burger
                 opened={opened}
@@ -33,8 +34,7 @@ function App() {
                 mr="xl"
               />
             </MediaQuery>
-
-            <Text>Application header</Text>
+            <AppHeader  opened={!opened}/>
           </div>
         </Header>
       }
