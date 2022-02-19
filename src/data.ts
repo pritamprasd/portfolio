@@ -2,8 +2,7 @@ import { FaTools, FaProjectDiagram } from 'react-icons/fa';
 import { IconType } from 'react-icons/lib';
 
 export type TileData = {
-    title: string,
-    repo: string
+    title: string
 }
 
 export type ProjectData = {
@@ -25,15 +24,18 @@ export const data: ProjectData = {
             tiles: [
                 {
                     title: 'e-commerce',
-                    repo: 'https://github.com/pritamprasd/e-commerce'
                 },
                 {
                     title: 'crypto-lending',
-                    repo: 'https://github.com/pritamprasd/crypto-lending'
                 },
                 {
                     title: 'covid-dashboard',
-                    repo: 'https://github.com/pritamprasd/covid-dashboard'
+                },
+                {
+                    title: 'distributed-systems-demo',
+                },
+                {
+                    title: 'poc-encrypt-flask-reactjs',
                 }
             ]
         },
