@@ -30,6 +30,10 @@ export const data: ProjectData = {
                 {
                     title: 'crypto-lending',
                     repo: 'https://github.com/pritamprasd/crypto-lending'
+                },
+                {
+                    title: 'covid-dashboard',
+                    repo: 'https://github.com/pritamprasd/covid-dashboard'
                 }
             ]
         },
