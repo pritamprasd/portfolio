@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai'
-import { AppShell, Burger, Header, MediaQuery, Navbar, SimpleGrid, Text, ThemeIcon, Title, useMantineTheme } from '@mantine/core';
+import { SimpleGrid, ThemeIcon, Title} from '@mantine/core';
 import { IconType } from 'react-icons/lib';
 
 interface IAppHeaderProps{
