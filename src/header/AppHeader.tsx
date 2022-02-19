@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai'
 import { AppShell, Burger, Header, MediaQuery, Navbar, SimpleGrid, Text, ThemeIcon, Title, useMantineTheme } from '@mantine/core';
+import { IconType } from 'react-icons/lib';
 
 interface IAppHeaderProps{
     opened: boolean
@@ -12,18 +13,25 @@ function AppHeader(props: IAppHeaderProps) {
         <>
             <Title order={2}>pritam.dev</Title>
             <SimpleGrid cols={2} hidden={displayLinks}>
-                <ThemeIcon>
-                    <a href='https://github.com/pritamprasd' style={{color: 'inherit'}}>
-                        <AiFillGithub></AiFillGithub>
-                    </a>
-                </ThemeIcon>
-                <ThemeIcon>
-                    <a href='https://www.linkedin.com/in/pritamprasd/' style={{color: 'inherit'}}>
-                        <AiFillLinkedin></AiFillLinkedin>
-                    </a>
-                </ThemeIcon>
+                <ThemedIcon icon={AiFillGithub} link='https://github.com/pritamprasd' />
+                <ThemedIcon icon={AiFillLinkedin} link='https://www.linkedin.com/in/pritamprasd/' />
             </SimpleGrid>
         </>
+    );
+}
+
+interface ThemedIconProps{
+    icon: IconType,
+    link: string
+}
+
+function ThemedIcon(props: ThemedIconProps){
+    return(
+        <ThemeIcon>
+            <a href={props.link} style={{color: 'inherit'}}>
+                <props.icon></props.icon>
+            </a>
+        </ThemeIcon>
     );
 }
 
