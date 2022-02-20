@@ -23,7 +23,7 @@ function ToolsPage(props: IToolsProps) {
                 </SimpleGrid>
             }
             {activeTool==='vs-code-editor' && <Editor/>}
-            {activeTool==='copy-boardr' && <CopyBoard/>}
+            {activeTool==='copy-board' && <CopyBoard/>}
         </>
 
     );
