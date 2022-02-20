@@ -6,7 +6,7 @@ import SideBar from './sidebar/SideBar';
 
 function App() {
   const [opened, setOpened] = useState(false);
-  const [activePage, setActivePage] = useState('projects');
+  const [activePage, setActivePage] = useState('tools');
   const theme = useMantineTheme();
 
   return (

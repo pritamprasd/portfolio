@@ -10,29 +10,29 @@ function ProjectsPage() {
                 { maxWidth: 755, cols: 2, spacing: 'md' },
                 { maxWidth: 600, cols: 1, spacing: 'sm' },
             ]}>
-            {data.pages['projects'].tiles?.map(t => <Tile key={t.title} data={t} />)}
+            {data.pages['projects'].tiles?.map(t => <ProjectTile key={t.title} data={t} />)}
         </SimpleGrid>
     );
 }
 
-interface ITileProps {
+interface IProjectTileProps {
     data: TileData
 }
 
-function Tile(props: ITileProps) {
+function ProjectTile(props: IProjectTileProps) {
     return (
         <Paper padding="md" shadow="xs">
             <ProjectInfo title={props.data.title} />
-            <Langs title={props.data.title} />
+            <ProjectLangs title={props.data.title} />
         </Paper>
     );
 }
 
-interface ILangProps {
+interface IProjectLangProps {
     title: string
 }
 
-function ProjectInfo(props: ILangProps) {
+function ProjectInfo(props: IProjectLangProps) {
     const [title, setTitle] = useState<string>('');
     const [desc, setDesc] = useState<string>('');
     const [url, setUrl] = useState<string>('');
@@ -57,7 +57,7 @@ function ProjectInfo(props: ILangProps) {
     );
 }
 
-function Langs(props: ILangProps) {
+function ProjectLangs(props: IProjectLangProps) {
     const [languages, setLang] = useState<{ [key: string]: number }>({});
     useEffect(() => {
         fetch(`https://api.github.com/repos/pritamprasd/${props.title}/languages`)

@@ -2,7 +2,8 @@ import { FaTools, FaProjectDiagram } from 'react-icons/fa';
 import { IconType } from 'react-icons/lib';
 
 export type TileData = {
-    title: string
+    title: string,
+    description?: string
 }
 
 export type ProjectData = {
@@ -41,7 +42,15 @@ export const data: ProjectData = {
         },
         'tools': {
             title: 'Tools',
-            icon: FaTools
+            icon: FaTools,
+            tiles: [
+                {
+                    title: 'vs-code-editor',
+                },
+                {
+                    title: 'copy-board',
+                }                
+            ]
         }
     }
 };

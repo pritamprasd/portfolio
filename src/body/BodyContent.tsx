@@ -10,7 +10,7 @@ function BodyContent(props: IBodyContentProps) {
     return (
         <div>
             {props.activePage === 'projects' && <ProjectsPage/>}
-            {props.activePage === 'tools' && <ToolsPage/>}
+            {props.activePage === 'tools' && <ToolsPage activeTool=''/>}
         </div>
     );
 }
