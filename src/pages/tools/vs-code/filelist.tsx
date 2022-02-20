@@ -1,7 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useLiveQuery } from 'dexie-react-hooks';
-import './filelist.css';
-import { db } from './db';
+import { db } from '../../../index-db';
 
 interface IFileListProps{
     updateCode: Function
@@ -42,9 +41,9 @@ const FileNameTime = (props: IFileNameProps) =>{
         props.reRenderList(Date.now())
     }
     return(
-        <div className='filetile'>
+        <div style={{display: 'flex'}}>
             <div onClick={emitCodeUpdateEvent}>{props.codeInfo.name}</div>
-            <button className='delete-button' onClick={deleteCode}>X</button>
+            <button style={{height: '1.5em', width: '1.5em'}} onClick={deleteCode}>X</button>
         </div>
     );
 }

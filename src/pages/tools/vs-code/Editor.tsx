@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { languages, themes } from './const';
-import { addNewCodeFile } from './db';
+import { addNewCodeFile, languages, themes } from './utils';
 import { FileList } from './filelist';
 import * as monaco from 'monaco-editor';
 
