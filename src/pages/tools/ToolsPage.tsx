@@ -1,5 +1,5 @@
 import { Paper, SimpleGrid } from '@mantine/core';
-import { data, TileData } from '../../data';
+import { data, styles, TileData } from '../../data';
 import React, { useState } from 'react';
 import { Editor } from './vs-code/Editor';
 import CopyBoard from './copy-board/CopyBoard';
@@ -38,7 +38,7 @@ interface IProjectTileProps {
 function ToolsTile(props: IProjectTileProps) {
     const dispatch = useDispatch();
     return (
-        <Paper padding="md" shadow="xs" onClick={() => dispatch(updateVisiblePage(props.data.title))}>
+        <Paper padding="md" shadow="xs" style={{backgroundColor: styles.primary_accent}} onClick={() => dispatch(updateVisiblePage(props.data.title))}>
             {props.data.title}
         </Paper>
     );

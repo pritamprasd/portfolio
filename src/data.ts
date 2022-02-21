@@ -56,5 +56,7 @@ export const data: ProjectData = {
 };
 
 export const styles = {
-    body_background_color: 'blue'
+    primary_accent: '#7865dc',
+    primary_error: '#962f5a',
+    primary_warn: '#bd9417',
 }

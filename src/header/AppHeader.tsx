@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai'
 import { SimpleGrid, ThemeIcon, Title} from '@mantine/core';
 import { IconType } from 'react-icons/lib';
+import { styles } from '../data';
 
 interface IAppHeaderProps{
     opened: boolean
@@ -27,7 +28,7 @@ interface ThemedIconProps{
 
 function ThemedIcon(props: ThemedIconProps){
     return(
-        <ThemeIcon>
+        <ThemeIcon style={{backgroundColor: styles.primary_accent}}>
             <a href={props.link} style={{color: 'inherit'}}>
                 <props.icon></props.icon>
             </a>

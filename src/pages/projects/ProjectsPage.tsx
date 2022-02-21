@@ -1,6 +1,6 @@
 import { Code, Container, Group, Paper, SimpleGrid, Text, Title } from '@mantine/core';
 import React, { useEffect, useState } from 'react';
-import { data, TileData } from '../../data';
+import { data, styles, TileData } from '../../data';
 
 function ProjectsPage() {
     return (
@@ -21,7 +21,7 @@ interface IProjectTileProps {
 
 function ProjectTile(props: IProjectTileProps) {
     return (
-        <Paper padding="md" shadow="xs">
+        <Paper padding="md" shadow="xs" style={{backgroundColor: styles.primary_accent}}>
             <ProjectInfo title={props.data.title} />
             <ProjectLangs title={props.data.title} />
         </Paper>
@@ -43,10 +43,10 @@ function ProjectInfo(props: IProjectLangProps) {
             fetch(localurl)
                 .then(r => r.json())
                 .then(r => {
-                    localStorage.setItem(url, JSON.stringify(r))
+                    localStorage.setItem(url, JSON.stringify(r));
                     setTitle(r['name']);
                     setDesc(r['description']);
-                    setUrl(r['html_url'])
+                    setUrl(r['html_url']);
                 })
                 .catch(e => console.error(JSON.stringify(e)));
         } else {
@@ -62,7 +62,7 @@ function ProjectInfo(props: IProjectLangProps) {
                 onClick={() => window.location.replace(url)}>
                 <Title order={3}>{title}</Title>
             </div>
-            <Text size="sm" color="red">{desc}</Text>
+            <Text size="sm" color="white">{desc}</Text>
         </>
     );
 }
@@ -76,8 +76,8 @@ function ProjectLangs(props: IProjectLangProps) {
             fetch(url)
                 .then(r => r.json())
                 .then(r => {
-                    setLang(r)
-                    localStorage.setItem(url, JSON.stringify(r))
+                    setLang(r);
+                    localStorage.setItem(url, JSON.stringify(r));
                 })
                 .catch(e => console.error(JSON.stringify(e)));
         } else {
@@ -85,8 +85,8 @@ function ProjectLangs(props: IProjectLangProps) {
         }
     }, []);
     return (
-        <Group>
-            {Object.keys(languages).map(k => <Code>{k}</Code>)}
+        <Group style={{bottom: '0rem'}}>
+            {Object.keys(languages).map(k => <Code style={{backgroundColor: styles.primary_error}}>{k}</Code>)}
         </Group>
     );
 }

@@ -1,8 +1,9 @@
-import { Button, Dialog, Grid, Input, SimpleGrid, Text, TextInput } from '@mantine/core';
+import { Button, Dialog, Divider, Grid, Input, SimpleGrid, Text, TextInput } from '@mantine/core';
 import { useLiveQuery } from 'dexie-react-hooks';
 import React, { useState } from 'react';
 import { db } from '../../../index-db';
 import { IoMdTrash, IoMdClipboard, IoMdRemoveCircleOutline } from 'react-icons/io';
+import { styles } from '../../../data';
 
 function CopyBoard() {
     const [clipboard, setclipboard] = useState<string>('');
@@ -31,9 +32,10 @@ function CopyBoard() {
                     <TextInput value={clipboard} onKeyDown={handleInputKeyDown} onChange={e => setclipboard(e.target.value)} />
                 </Grid.Col>
                 <Grid.Col span={2}>
-                    <Button leftIcon={<IoMdTrash />} onClick={clearAllClips} style={{backgroundClip: '#1981C0'}}> Clear all</Button>
+                    <Button leftIcon={<IoMdTrash />} onClick={clearAllClips} style={{backgroundColor: styles.primary_error}}> Clear all</Button>
                 </Grid.Col>
             </Grid>
+            <Divider size="xs" style={{marginTop: '1rem', paddingTop: '1rem'}}/>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
                 {allclips && allclips.map(c => <CopyTiles clip={c['text']} id={c['id']} />)}
             </div>
@@ -55,16 +57,16 @@ function CopyTiles(p: IPropCopyTiles) {
     }
     return (
         <div style={{ display: 'flex', flexDirection: 'row', width: '100%', justifyContent: 'space-between', 
-            margin: '0.25rem', alignItems: 'center', background: '#1981C0', borderRadius: '2px' }}>
+            margin: '0.25rem', alignItems: 'center', background: styles.primary_accent, borderRadius: '2px' }}>
             <div style={{ display: 'flex', flexDirection: 'row', width: '80%', cursor: 'pointer', alignItems: 'center' }}
                 onClick={handleOnCopyClick}>
-                <IoMdClipboard style={{ float: 'left', color: 'yellow', padding: '0.25rem' }} />
+                <IoMdClipboard style={{ float: 'left', color: styles.primary_warn, padding: '0.25rem' }} />
                 <Text key={p.clip} style={{ float: 'left', marginLeft: '0.5rem' }}>{p.clip}</Text>
             </div>
-            <IoMdRemoveCircleOutline style={{ cursor: 'pointer' , color: 'red', marginRight: '2rem'}} onClick={() => db.table("clipboard").delete(p.id)} />
+            <IoMdRemoveCircleOutline style={{ cursor: 'pointer' , color: styles.primary_error, marginRight: '2rem'}} onClick={() => db.table("clipboard").delete(p.id)} />
             <Dialog opened={copied}  onClose={() => setcopied(false)} size="lg" radius="md" 
                 transitionDuration={300} transitionTimingFunction="ease" transition="slide-up"
-                style={{background: '#1981C0'}}>
+                style={{background: styles.primary_accent}}>
                 Copied!!
             </Dialog>
         </div>
