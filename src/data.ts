@@ -1,4 +1,5 @@
 import { FaTools, FaProjectDiagram } from 'react-icons/fa';
+import {BsFillFileEarmarkPersonFill} from 'react-icons/bs'
 import { IconType } from 'react-icons/lib';
 
 export type TileData = {
@@ -51,6 +52,10 @@ export const data: ProjectData = {
                     title: 'copy-board',
                 }                
             ]
+        },
+        'portfolio':{
+            title: 'Portfolio',
+            icon: BsFillFileEarmarkPersonFill,            
         }
     }
 };

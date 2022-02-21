@@ -2,4 +2,12 @@ body {
     font-family: 'Roboto', sans-serif;
     width: 100%;
     color: whitesmoke;
+    background-color: rgb(20, 21, 23);
+}
+
+.bottom-svg {
+    background-image: url(./assets/svgs/wave.svg);
+    position: fixed;
+    width: 100%;
+    bottom: 0;
 }

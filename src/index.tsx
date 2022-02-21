@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import { MantineProvider } from '@mantine/core';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
 import { store } from './store';
 
 ReactDOM.render(
@@ -19,7 +18,7 @@ ReactDOM.render(
         xl: 1400,
       }
     }}>
-      <App />
+      <App />      
     </MantineProvider>
   </Provider>,
   document.getElementById('root')

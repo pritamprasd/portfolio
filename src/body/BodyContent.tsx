@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { data, styles } from '../data';
 import AllPages from '../pages/AllPages';
 import { selectVisiblePage } from '../pages/pagesSlice';
+import Portfolio from '../pages/portfolio/Portfolio';
 import ProjectsPage from '../pages/projects/ProjectsPage';
 import ToolsPage from '../pages/tools/ToolsPage';
 import { RootState } from '../store';
@@ -19,6 +20,7 @@ function BodyContent(props: IBodyContentProps) {
             {currentpage === 'default' && <AllPages/>}
             {currentpage === 'projects' && <ProjectsPage/>}
             {currentpage === 'tools' && <ToolsPage/>}
+            {currentpage === 'portfolio' && <Portfolio/>}
             {data.pages['tools'].tiles?.map(t => t.title).includes(currentpage) && <ToolsPage/>}            
         </div>
     );

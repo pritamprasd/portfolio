@@ -4,10 +4,11 @@ import { data, styles, TileData } from '../../data';
 
 function ProjectsPage() {
     return (
-        <SimpleGrid cols={3}
+        <SimpleGrid cols={4}
             spacing="lg"
             breakpoints={[
-                { maxWidth: 755, cols: 2, spacing: 'md' },
+                { maxWidth: 1200, cols: 3, spacing: 'md' },
+                { maxWidth: 850, cols: 2, spacing: 'md' },
                 { maxWidth: 600, cols: 1, spacing: 'sm' },
             ]}>
             {data.pages['projects'].tiles?.map(t => <ProjectTile key={t.title} data={t} />)}
@@ -37,13 +38,14 @@ function ProjectInfo(props: IProjectLangProps) {
     const [desc, setDesc] = useState<string>('');
     const [url, setUrl] = useState<string>('');
     const localurl = `https://api.github.com/repos/pritamprasd/${props.title}`;
+    const ls_key = `info${props.title}`
     useEffect(() => {
-        const repo: string = localStorage.getItem(url) || '';
+        const repo: string = localStorage.getItem(ls_key) || '';
         if (repo === '') {
             fetch(localurl)
                 .then(r => r.json())
                 .then(r => {
-                    localStorage.setItem(url, JSON.stringify(r));
+                    localStorage.setItem(ls_key, JSON.stringify(r));
                     setTitle(r['name']);
                     setDesc(r['description']);
                     setUrl(r['html_url']);
@@ -70,14 +72,15 @@ function ProjectInfo(props: IProjectLangProps) {
 function ProjectLangs(props: IProjectLangProps) {
     const [languages, setLang] = useState<{ [key: string]: number }>({});
     const url = `https://api.github.com/repos/pritamprasd/${props.title}/languages`;
+    const ls_key = `lang${props.title}`
     useEffect(() => {
-        const langs: string = localStorage.getItem(url) || ''
+        const langs: string = localStorage.getItem(ls_key) || ''
         if (langs === '') {
             fetch(url)
                 .then(r => r.json())
                 .then(r => {
                     setLang(r);
-                    localStorage.setItem(url, JSON.stringify(r));
+                    localStorage.setItem(ls_key, JSON.stringify(r));
                 })
                 .catch(e => console.error(JSON.stringify(e)));
         } else {
