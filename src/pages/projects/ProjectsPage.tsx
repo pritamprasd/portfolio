@@ -36,15 +36,25 @@ function ProjectInfo(props: IProjectLangProps) {
     const [title, setTitle] = useState<string>('');
     const [desc, setDesc] = useState<string>('');
     const [url, setUrl] = useState<string>('');
+    const localurl = `https://api.github.com/repos/pritamprasd/${props.title}`;
     useEffect(() => {
-        fetch(`https://api.github.com/repos/pritamprasd/${props.title}`)
-            .then(r => r.json())
-            .then(r => {
-                setTitle(r['name']);
-                setDesc(r['description']);
-                setUrl(r['html_url'])
-            })
-            .catch(e => console.error(JSON.stringify(e)));
+        const repo: string = localStorage.getItem(url) || '';
+        if (repo === '') {
+            fetch(localurl)
+                .then(r => r.json())
+                .then(r => {
+                    localStorage.setItem(url, JSON.stringify(r))
+                    setTitle(r['name']);
+                    setDesc(r['description']);
+                    setUrl(r['html_url'])
+                })
+                .catch(e => console.error(JSON.stringify(e)));
+        } else {
+            const r = JSON.parse(repo);
+            setTitle(r['name']);
+            setDesc(r['description']);
+            setUrl(r['html_url'])
+        }
     }, []);
     return (
         <>
@@ -59,11 +69,20 @@ function ProjectInfo(props: IProjectLangProps) {
 
 function ProjectLangs(props: IProjectLangProps) {
     const [languages, setLang] = useState<{ [key: string]: number }>({});
+    const url = `https://api.github.com/repos/pritamprasd/${props.title}/languages`;
     useEffect(() => {
-        fetch(`https://api.github.com/repos/pritamprasd/${props.title}/languages`)
-            .then(r => r.json())
-            .then(r => setLang(r))
-            .catch(e => console.error(JSON.stringify(e)));
+        const langs: string = localStorage.getItem(url) || ''
+        if (langs === '') {
+            fetch(url)
+                .then(r => r.json())
+                .then(r => {
+                    setLang(r)
+                    localStorage.setItem(url, JSON.stringify(r))
+                })
+                .catch(e => console.error(JSON.stringify(e)));
+        } else {
+            setLang(JSON.parse(langs));
+        }
     }, []);
     return (
         <Group>

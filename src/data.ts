@@ -54,3 +54,7 @@ export const data: ProjectData = {
         }
     }
 };
+
+export const styles = {
+    body_background_color: 'blue'
+}

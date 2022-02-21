@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { data } from '../data';
+import { data, styles } from '../data';
 import AllPages from '../pages/AllPages';
 import { selectVisiblePage } from '../pages/pagesSlice';
 import ProjectsPage from '../pages/projects/ProjectsPage';
