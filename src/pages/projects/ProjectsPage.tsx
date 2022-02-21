@@ -1,4 +1,4 @@
-import { Code, Container, Group, Paper, SimpleGrid, Text, Title } from '@mantine/core';
+import { Code, Container, Divider, Group, Paper, SimpleGrid, Text, Title } from '@mantine/core';
 import React, { useEffect, useState } from 'react';
 import { data, styles, TileData } from '../../data';
 
@@ -24,6 +24,7 @@ function ProjectTile(props: IProjectTileProps) {
     return (
         <Paper padding="md" shadow="xs" style={{backgroundColor: styles.primary_accent}}>
             <ProjectInfo title={props.data.title} />
+            <Divider color="yellow" style={{margin: '1rem'}}/>
             <ProjectLangs title={props.data.title} />
         </Paper>
     );
@@ -62,9 +63,9 @@ function ProjectInfo(props: IProjectLangProps) {
         <>
             <div style={{ cursor: 'pointer' }}
                 onClick={() => window.location.replace(url)}>
-                <Title order={3}>{title}</Title>
+                <Title order={3} style={{color: styles.primary_warn}}>{title}</Title>
             </div>
-            <Text size="sm" color="white">{desc}</Text>
+            <Text size="sm">{desc}</Text>
         </>
     );
 }

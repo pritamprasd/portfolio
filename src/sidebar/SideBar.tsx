@@ -18,6 +18,7 @@ function SideBar(props: ISideBarProps) {
             <Links pageName='portfolio' clickedPage={props.clickedPage}/>
             <Links pageName='projects' clickedPage={props.clickedPage}/>
             <Links pageName='tools' clickedPage={props.clickedPage}/>
+            <Links pageName='music' clickedPage={props.clickedPage}/>
         </div>
     );
 }
