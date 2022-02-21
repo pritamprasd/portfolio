@@ -3,40 +3,42 @@ import { data, TileData } from '../../data';
 import React, { useState } from 'react';
 import { Editor } from './vs-code/Editor';
 import CopyBoard from './copy-board/CopyBoard';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateVisiblePage } from '../pagesSlice';
+import { RootState } from '../../store';
 
 interface IToolsProps{
-    activeTool: string
+ 
 }
 
-function ToolsPage(props: IToolsProps) {
-    const [activeTool, setActiveTool] = useState<string>(props.activeTool);
+function ToolsPage(props: IToolsProps) {   
+    const currentpage = useSelector((state: RootState) => state.pages.visiblePage)
     return (
         <>
-            {activeTool === '' &&
+            {currentpage  === 'tools' &&
                 <SimpleGrid cols={3}
                     spacing="lg"
                     breakpoints={[
                         { maxWidth: 755, cols: 2, spacing: 'md' },
                         { maxWidth: 600, cols: 1, spacing: 'sm' },
                     ]}>
-                    {data.pages['tools'].tiles?.map(t => <ToolsTile key={t.title} data={t} updateActiveTool={(e: string) => setActiveTool(e)} />)}
+                    {data.pages['tools'].tiles?.map(t => <ToolsTile key={t.title} data={t}/>)}
                 </SimpleGrid>
             }
-            {activeTool==='vs-code-editor' && <Editor/>}
-            {activeTool==='copy-board' && <CopyBoard/>}
+            {currentpage ==='vs-code-editor' && <Editor/>}
+            {currentpage ==='copy-board' && <CopyBoard/>}
         </>
-
     );
 }
 
 interface IProjectTileProps {
     data: TileData;
-    updateActiveTool: Function
 }
 
 function ToolsTile(props: IProjectTileProps) {
+    const dispatch = useDispatch();
     return (
-        <Paper padding="md" shadow="xs" onClick={() => props.updateActiveTool(props.data.title)}>
+        <Paper padding="md" shadow="xs" onClick={() => dispatch(updateVisiblePage(props.data.title))}>
             {props.data.title}
         </Paper>
     );

@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { MantineProvider } from '@mantine/core';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import { store } from './store';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <MantineProvider theme={{ 
+  <Provider store={store}>
+    <MantineProvider theme={{
       colorScheme: 'dark',
       breakpoints: {
         xs: 500,
@@ -18,6 +21,6 @@ ReactDOM.render(
     }}>
       <App />
     </MantineProvider>
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );

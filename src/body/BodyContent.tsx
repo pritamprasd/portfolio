@@ -1,16 +1,25 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { data } from '../data';
+import AllPages from '../pages/AllPages';
+import { selectVisiblePage } from '../pages/pagesSlice';
 import ProjectsPage from '../pages/projects/ProjectsPage';
 import ToolsPage from '../pages/tools/ToolsPage';
+import { RootState } from '../store';
 
 interface IBodyContentProps{
     activePage: string
 }
 
 function BodyContent(props: IBodyContentProps) {
+    const currentpage = useSelector((state: RootState) => state.pages.visiblePage)
+    console.log('State update? '+ currentpage);
     return (
         <div>
-            {props.activePage === 'projects' && <ProjectsPage/>}
-            {props.activePage === 'tools' && <ToolsPage activeTool=''/>}
+            {currentpage === 'default' && <AllPages/>}
+            {currentpage === 'projects' && <ProjectsPage/>}
+            {currentpage === 'tools' && <ToolsPage/>}
+            {data.pages['tools'].tiles?.map(t => t.title).includes(currentpage) && <ToolsPage/>}            
         </div>
     );
 }

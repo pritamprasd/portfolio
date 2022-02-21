@@ -1,8 +1,9 @@
-import { Text, ThemeIcon } from '@mantine/core';
+import { Text } from '@mantine/core';
 import React, { useState } from 'react';
 import { IconType } from 'react-icons/lib';
-import { json } from 'stream/consumers';
+import { useDispatch } from 'react-redux';
 import { data } from '../data';
+import { updateVisiblePage } from '../pages/pagesSlice';
 
 interface ISideBarProps {
     activePage: string,
@@ -26,10 +27,12 @@ interface ISidebarlinkProp{
 }
 
 function Links(props: ISidebarlinkProp) {
+    const dispatch = useDispatch();
     const [title, setTitle] = useState<string>(data.pages[props.pageName].title);
     const [linkIcon, setLinkIcon] = useState<IconType>(data.pages[props.pageName].icon);
     return (
-        <div style={{cursor: 'pointer', display: 'flex', flexDirection:'row', alignItems: 'center'}} onClick={() => props.clickedPage(props.pageName)}>
+        <div style={{cursor: 'pointer', display: 'flex', flexDirection:'row', alignItems: 'center'}} 
+        onClick={() => dispatch(updateVisiblePage(props.pageName))}>
             {linkIcon}
             <Text style={{padding: '0.5rem'}}>{title}</Text>                
         </div>
