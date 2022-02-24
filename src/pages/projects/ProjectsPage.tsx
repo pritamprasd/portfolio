@@ -1,4 +1,4 @@
-import { Code, Divider, Group, Paper, SegmentedControl, SimpleGrid, Text, Title } from '@mantine/core';
+import { Button, Code, Divider, Group, Paper, SegmentedControl, SimpleGrid, Text, Title } from '@mantine/core';
 import { useLiveQuery } from 'dexie-react-hooks';
 import React, { useEffect, useState } from 'react';
 import { data, styles, TileData } from '../../data';
@@ -80,6 +80,11 @@ function ProjectFilter(props: IProjectFilters) {
         newLangs.set(l, !newLangs.get(l));
         props.updateActiveLangs(newLangs);
     }
+    const handleUnselectAll = () => {
+        const newLangs = new Map(props.langs);
+        newLangs.forEach((value, key, map) => map.set(key, false));
+        props.updateActiveLangs(newLangs);
+    }
     return (
         <Group style={{bottom: '0rem' , padding: '0.5rem'}}>            
             {
@@ -94,6 +99,7 @@ function ProjectFilter(props: IProjectFilters) {
                     );
                 })
             }
+            <Button size="xs" onClick={handleUnselectAll} > Unselect All</Button>
         </Group>
     );
 }
