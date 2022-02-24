@@ -47,6 +47,18 @@ export const data: ProjectData = {
                 },
                 {
                     title: 'poc-encrypt-flask-reactjs',
+                },
+                {
+                    title: 'cryptography-basics-web',
+                },
+                {
+                    title: 'rq-scheduler-sample ',
+                },
+                {
+                    title: 'therapyApp',
+                },
+                {
+                    title: 'DownloadApplication',
                 }
             ]
         },
