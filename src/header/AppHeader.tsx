@@ -35,7 +35,10 @@ function DeleteIndexDbModal() {
         () => db.tables
     );
     const handleDeleteClick = (tableName: string) => {
-        db.table(tableName).clear();
+        db.table(tableName)
+        .clear()
+        .then(() => alert(`${tableName} deleted`))
+        .catch((e) => alert(`${tableName} can not be deleted!. Error: ${JSON.stringify(e)}`))
     }
     return (
         <div style={{display: 'flex', flexDirection: 'column'}}>
