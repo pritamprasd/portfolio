@@ -11,14 +11,23 @@ function AboutThisSite() {
             After working for sometime in backend side of code, thought of giving frontend a try. 
             And whats best than building self portfolio along with some cool in browser tools.
             Bdt, as you already have gussed, I'm terrible in UX &#128513;
+            <Divider style={{padding: '0.3rem', margin: '0.3rem'}}/>
+            <Text>                 
+                <List>
+                    <List.Item>The site is built on React with Typescript</List.Item>
+                    <List.Item>Deployed via Cloudflare pipeline</List.Item>
+                    <List.Item>Uses IndexDB heavily</List.Item>
+                </List>
+                <Text variant="link" component="a" href="https://github.com/pritamprasd/portfolio"><AiFillGithub/> https://github.com/pritamprasd/portfolio</Text>
             </Text>
-            <Divider style={{padding: '0.2rem'}}/>
+            </Text>
+            <Divider style={{padding: '0.3rem', margin: '0.3rem'}}/>
             <Text>Open Source projects used:</Text>
             <List>
                 <List.Item>Monaco Editor: https://github.com/microsoft/monaco-editor</List.Item>
                 <List.Item>Mantine components library: https://github.com/mantinedev/mantine</List.Item>
             </List>
-            <Divider style={{padding: '0.2rem'}}/>
+            <Divider style={{padding: '0.3rem', margin: '0.3rem'}}/>
             <Text color="dimmed">
                 Contact Details:
                 <Text><SiMinutemailer/> mail: mail@pritam.dev</Text>
