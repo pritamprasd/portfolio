@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { data, styles, TileData } from '../../data';
 import { db, IProjectData } from '../../index-db';
 
-function ProjectsPage2() { 
+function ProjectsPage() { 
     const[langFilter, setlangFilter] = useState<Map<string, boolean>>();
     let allprojects = useLiveQuery(
         () => db.table("projects").toArray()
@@ -125,4 +125,4 @@ function ProjectTile(props: IProjectTileProps) {
     );
 }
 
-export default ProjectsPage2;
+export default ProjectsPage;
