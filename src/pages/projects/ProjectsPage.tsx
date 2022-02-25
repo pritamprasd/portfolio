@@ -99,7 +99,7 @@ function ProjectFilter(props: IProjectFilters) {
                     );
                 })
             }
-            <Button size="xs" onClick={handleUnselectAll} > Unselect All</Button>
+            <Button size="sm" onClick={handleUnselectAll} > Unselect All</Button>
         </Group>
     );
 }
@@ -119,7 +119,8 @@ function ProjectTile(props: IProjectTileProps) {
             <Divider color="yellow" style={{margin: '1rem'}}/>
             <Group style={{bottom: '0rem'}}>
                 {Object.keys(props.projectData.languages).map((k:any) => 
-                    <Code style={{backgroundColor: styles.primary_error, padding: '0.1rem'}}>{props.projectData.languages[k]}</Code>)}
+                    <Code style={{backgroundColor: styles.primary_error, padding: '0.1rem'}} key={props.projectData.languages[k]}>
+                        {props.projectData.languages[k]}</Code>)}
             </Group>
         </Paper>
     );

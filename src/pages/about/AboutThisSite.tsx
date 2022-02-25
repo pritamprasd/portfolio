@@ -26,6 +26,7 @@ function AboutThisSite() {
             <List>
                 <List.Item>Monaco Editor: https://github.com/microsoft/monaco-editor</List.Item>
                 <List.Item>Mantine components library: https://github.com/mantinedev/mantine</List.Item>
+                <List.Item>Dexie lib: https://github.com/dexie/Dexie.js</List.Item>
             </List>
             <Divider style={{padding: '0.3rem', margin: '0.3rem'}}/>
             <Text color="dimmed">
