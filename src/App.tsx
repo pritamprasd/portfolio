@@ -20,7 +20,7 @@ function App() {
       }
       header={
         <Header height={70} padding="md" className='app-header'>
-          <div style={{ display: 'flex', alignItems: 'flex-end', height: '100%', flexDirection:'row' , justifyContent: 'space-between'}}>
+          <div style={{ display: 'flex', height: '100%', flexDirection:'row' , justifyContent: 'flex-start'}}>
             <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
               <Burger opened={opened} onClick={() => setOpened((o) => !o)} size="sm" color={theme.colors.gray[6]} mr="xl"/>
             </MediaQuery>

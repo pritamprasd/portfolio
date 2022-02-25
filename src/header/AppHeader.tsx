@@ -11,9 +11,9 @@ interface IAppHeaderProps{
 function AppHeader(props: IAppHeaderProps) {
     const [displayLinks, setDisplayLinks] = useState<boolean>(props.opened)
     return (
-        <>
+        <div style={{display: 'flex', flexDirection: 'row'}}>
             <Title order={2}>pritam.dev</Title>
-        </>
+        </div>
     );
 }
 
