@@ -42,4 +42,10 @@ class AppStorageDb extends Dexie {
     }
 }
 
+export const normalizedTableNames: {[key: string]: string} = {
+    'vscodeFiles' : 'Code Editor Saved Files',
+    'clipboard' : 'Clipboard tool saved clips',
+    'projects' : 'Refresh Information on Project Page'
+}
+
 export const db = new AppStorageDb();

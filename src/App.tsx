@@ -25,12 +25,12 @@ function App() {
       }
       header={
         <Header height={70} padding="md" className='app-header'>
-          <div style={{ display: 'flex', height: '100%', flexDirection:'row' , justifyContent: 'flex-start'}}>
+          <div style={{ display: 'flex', height: '100%', flexDirection:'row' , justifyContent: 'flex-start', alignItems: 'center'}}>
             <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
               <Burger opened={opened} onClick={() => dispatch(toogleNavbar())} size="sm" color={theme.colors.gray[6]} mr="xl"/>
             </MediaQuery>
-            <AppHeader opened={!opened}/>
-          </div>
+            <AppHeader opened={!opened}/>            
+          </div>          
         </Header>
       }
       styles={(theme) => ({

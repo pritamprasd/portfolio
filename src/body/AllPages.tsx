@@ -18,7 +18,10 @@ function AllPages(props: IAllPagesProp) {
                 { maxWidth: 850, cols: 2, spacing: 'md' },
                 { maxWidth: 600, cols: 1, spacing: 'sm' },
             ]}>
-            {Object.keys(data.pages).filter(p => p !== 'default').map(p => <PagesTile title={p} icon={data.pages[p].icon}/>)}
+            {Object.keys(data.pages)
+                .filter(p => p !== 'default')
+                .map(p => <PagesTile title={data.pages[p].title} icon={data.pages[p].icon}/>)
+            }
         </SimpleGrid>
     );
 }
