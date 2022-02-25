@@ -40,7 +40,7 @@ function ToolsTile(props: IProjectTileProps) {
     const dispatch = useDispatch();
     return (
         <Paper padding="md" shadow="xs" style={{backgroundColor: styles.primary_accent, cursor: 'pointer'}} onClick={() => dispatch(updateVisiblePage(props.data.title))}>
-            <Text size="lg" weight={700} style={{color: styles.primary_warn}}>{props.data.title}</Text>
+            <Text size="lg" weight={700} style={{color: styles.primary_error}}>{props.data.title}</Text>
             <Text size="sm" >{props.data.description}</Text>
         </Paper>
     );

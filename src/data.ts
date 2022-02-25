@@ -1,7 +1,7 @@
 import { FaTools, FaProjectDiagram } from 'react-icons/fa';
 import {BsFillFileEarmarkPersonFill, BsFillMusicPlayerFill} from 'react-icons/bs'
 import { IconType } from 'react-icons/lib';
-import { title } from 'process';
+import { IoMdHome } from 'react-icons/io';
 
 export enum MusicTypes {
     playlist,
@@ -29,6 +29,10 @@ export type ProjectData = {
 
 export const data: ProjectData = {
     pages: {
+        'default':{
+            title: 'Home',
+            icon: IoMdHome,
+        },
         'projects': {
             title: 'Projects',
             icon: FaProjectDiagram,

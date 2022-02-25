@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { data, styles } from '../data';
-import AllPages from '../pages/AllPages';
+import AllPages from './AllPages';
 import Music from '../pages/music/Music';
 import { selectVisiblePage } from '../pages/pagesSlice';
 import Portfolio from '../pages/portfolio/Portfolio';

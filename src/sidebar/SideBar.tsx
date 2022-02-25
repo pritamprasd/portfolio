@@ -15,6 +15,7 @@ const navbarTextColor:string = '#A6A7AB';
 function SideBar(props: ISideBarProps) {
     return (
         <div style={{display: 'flex', flexDirection: 'column', color: navbarTextColor}}>
+            <Links pageName='default' clickedPage={props.clickedPage}/>
             <Links pageName='portfolio' clickedPage={props.clickedPage}/>
             <Links pageName='projects' clickedPage={props.clickedPage}/>
             <Links pageName='tools' clickedPage={props.clickedPage}/>
