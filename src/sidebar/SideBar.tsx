@@ -5,10 +5,11 @@ import { IconType } from 'react-icons/lib';
 import { useDispatch } from 'react-redux';
 import { data, navbarTextColor, styles } from '../data';
 import { updateVisiblePage } from '../pages/pagesSlice';
+import { closeNavbar } from './navbarSlice';
 
 interface ISideBarProps {
-    activePage: string,
-    clickedPage: Function
+    activePage: string;
+    clickedPage: Function;
 }
 
 function SideBar(props: ISideBarProps) {
@@ -54,7 +55,10 @@ function Links(props: ISidebarlinkProp) {
     const [linkIcon, setLinkIcon] = useState<IconType>(data.pages[props.pageName].icon);
     return (
         <div style={{cursor: 'pointer', display: 'flex', flexDirection:'row', alignItems: 'center'}} 
-        onClick={() => dispatch(updateVisiblePage(props.pageName))}>
+        onClick={() => {
+            dispatch(updateVisiblePage(props.pageName))
+            dispatch(closeNavbar());
+        }}>
             <ThemeIcon style={{backgroundColor: styles.primary_accent}}>{linkIcon}</ThemeIcon>
             <Text style={{padding: '0.5rem'}}>{title}</Text>                
         </div>

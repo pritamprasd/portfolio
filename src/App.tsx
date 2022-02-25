@@ -5,9 +5,14 @@ import BodyContent from './body/BodyContent';
 import SideBar from './sidebar/SideBar';
 import { url } from 'inspector';
 import './index.css'
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from './store';
+import { toogleNavbar } from './sidebar/navbarSlice';
 
 function App() {
-  const [opened, setOpened] = useState(false);
+  // const [opened, setOpened] = useState(false);
+  const opened = useSelector((state: RootState) => state.navbar.opened);
+  const dispatch = useDispatch();
   const [activePage, setActivePage] = useState('default');
   const theme = useMantineTheme();
 
@@ -22,7 +27,7 @@ function App() {
         <Header height={70} padding="md" className='app-header'>
           <div style={{ display: 'flex', height: '100%', flexDirection:'row' , justifyContent: 'flex-start'}}>
             <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
-              <Burger opened={opened} onClick={() => setOpened((o) => !o)} size="sm" color={theme.colors.gray[6]} mr="xl"/>
+              <Burger opened={opened} onClick={() => dispatch(toogleNavbar())} size="sm" color={theme.colors.gray[6]} mr="xl"/>
             </MediaQuery>
             <AppHeader opened={!opened}/>
           </div>
