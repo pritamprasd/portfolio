@@ -1,15 +1,8 @@
 {
-    "name": "portfolio",
+    "name": "portfolio2",
     "version": "0.1.0",
     "private": true,
-    "main": "index.js",
-    "scripts": {
-        "webpack": "webpack",
-        "start": "webpack serve",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
     "dependencies": {
-        "@babel/runtime": "^7.16.7",
         "@mantine/core": "^3.6.8",
         "@mantine/dates": "^3.6.8",
         "@mantine/dropzone": "^3.6.8",
@@ -18,29 +11,47 @@
         "@mantine/notifications": "^3.6.8",
         "@mantine/prism": "^3.6.8",
         "@mantine/rte": "^3.6.8",
+        "@reduxjs/toolkit": "^1.7.2",
+        "@types/jest": "^27.4.0",
+        "@types/node": "^16.11.25",
+        "@types/react": "^17.0.39",
+        "@types/react-dom": "^17.0.11",
+        "@types/react-redux": "^7.1.22",
         "dayjs": "^1.10.7",
-        "dexie": "^3.2.0",
+        "dexie": "^3.2.1",
         "dexie-react-hooks": "^1.1.1",
-        "monaco-editor": "^0.31.1",
+        "monaco-editor": "^0.32.1",
         "react": "^17.0.2",
-        "react-dom": "^17.0.2"
+        "react-dom": "^17.0.2",
+        "react-icons": "^4.3.1",
+        "react-redux": "^7.2.6",
+        "react-scripts": "5.0.0",
+        "redux": "^4.1.2",
+        "typescript": "^4.5.5",
+        "web-vitals": "^2.1.4"
     },
-    "devDependencies": {
-        "@babel/core": "^7.16.12",
-        "@babel/node": "^7.16.8",
-        "@babel/plugin-proposal-class-properties": "^7.16.7",
-        "@babel/plugin-transform-runtime": "^7.16.10",
-        "@babel/preset-env": "^7.16.11",
-        "@babel/preset-react": "^7.16.7",
-        "babel-loader": "^8.2.3",
-        "css-loader": "^6.5.1",
-        "file-loader": "^6.2.0",
-        "html-webpack-plugin": "^5.5.0",
-        "image-webpack-loader": "^8.1.0",
-        "path": "^0.12.7",
-        "style-loader": "^3.3.1",
-        "webpack": "^5.67.0",
-        "webpack-cli": "^4.9.2",
-        "webpack-dev-server": "^4.7.3"
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
     }
 }

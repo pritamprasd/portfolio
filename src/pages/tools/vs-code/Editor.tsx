@@ -1,17 +1,18 @@
 import React, { useRef, useEffect, useState } from 'react';
+import { addNewCodeFile, languages, themes } from './utils';
+import { FileList } from './filelist';
 import * as monaco from 'monaco-editor';
-import { addNewCodeFile } from './db';
-import { FileList } from './filelist'
-import { languages, themes } from './const';
 
 export const Editor = () => {
-    const divEl = useRef(null);
-    const [filename, setFilename] = useState('')
+    const divEl = useRef<HTMLDivElement>(null);
+    const [filename, setFilename] = useState<string>('')
     const [editorLang, setEditorLang] = useState(languages[0])
     const [editorTheme, setEditorTheme] = useState(themes[1])
-    const [editorInstance, setEditorInstance] = useState({})
-    const [code, setCode] = useState(localStorage.getItem('code'))
-    let editor = null;
+    const [editorInstance, setEditorInstance] = useState<any>(null)
+    const [code, setCode] = useState<string>(localStorage.getItem('code') || '')
+    
+    let editor:monaco.editor.IStandaloneCodeEditor;
+
     useEffect(() => {
         if (divEl.current) {
             console.log('Reruning... effect')
@@ -36,19 +37,19 @@ export const Editor = () => {
         addNewCodeFile(filename, code);
     }
     function updateCode() {
-        setCode(localStorage.getItem('code'));
+        setCode(localStorage.getItem('code') || '');
         editorInstance.setValue(localStorage.getItem('code'));
     }
-    function onLangChange(e) {
+    function onLangChange(e:any) {
         setEditorLang(e.target.value);
     }
-    function onThemeChange(e) {
+    function onThemeChange(e:any) {
         setEditorTheme(e.target.value);
     }
     
     return (
         <div>
-            <div className="Editor" ref={divEl}> </div>
+            <div className="Editor" ref={divEl} style={{width: '100%', height: '70vh'}}/>
             <select onClick={onLangChange}>
                 {languages.map(l => <option value={l}>{l}</option>)}
             </select>
