@@ -3,6 +3,8 @@ import {BsFillFileEarmarkPersonFill, BsFillMusicPlayerFill} from 'react-icons/bs
 import { IconType } from 'react-icons/lib';
 import { IoMdHome } from 'react-icons/io';
 
+export const navbarTextColor:string = '#A6A7AB';
+
 export enum MusicTypes {
     playlist,
     song,

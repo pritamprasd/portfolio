@@ -1,8 +1,9 @@
-import { Text, ThemeIcon } from '@mantine/core';
+import { SimpleGrid, Text, ThemeIcon } from '@mantine/core';
 import React, { useState } from 'react';
+import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
 import { IconType } from 'react-icons/lib';
 import { useDispatch } from 'react-redux';
-import { data, styles } from '../data';
+import { data, navbarTextColor, styles } from '../data';
 import { updateVisiblePage } from '../pages/pagesSlice';
 
 interface ISideBarProps {
@@ -10,19 +11,37 @@ interface ISideBarProps {
     clickedPage: Function
 }
 
-const navbarTextColor:string = '#A6A7AB';
-
 function SideBar(props: ISideBarProps) {
     return (
-        <div style={{display: 'flex', flexDirection: 'column', color: navbarTextColor}}>
+        <div style={{display: 'flex', flexDirection: 'column', color: navbarTextColor, height: '100vh'}}>
             <Links pageName='default' clickedPage={props.clickedPage}/>
             <Links pageName='portfolio' clickedPage={props.clickedPage}/>
             <Links pageName='projects' clickedPage={props.clickedPage}/>
             <Links pageName='tools' clickedPage={props.clickedPage}/>
             <Links pageName='music' clickedPage={props.clickedPage}/>
+            <SimpleGrid cols={2} style={{marginTop: 'auto', justifyItems: 'center'}}>
+                <ThemedIcon icon={AiFillGithub} link='https://github.com/pritamprasd' />
+                <ThemedIcon icon={AiFillLinkedin} link='https://www.linkedin.com/in/pritamprasd/' />
+            </SimpleGrid>
         </div>
     );
 }
+
+interface ThemedIconProps{
+    icon: IconType,
+    link: string
+}
+
+function ThemedIcon(props: ThemedIconProps){
+    return(
+        <ThemeIcon style={{backgroundColor: styles.primary_accent}}>
+            <a href={props.link} style={{color: 'inherit'}}>
+                <props.icon></props.icon>
+            </a>    
+        </ThemeIcon>
+    );
+}
+
 
 interface ISidebarlinkProp{
     pageName: string,

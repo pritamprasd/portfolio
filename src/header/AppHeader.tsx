@@ -13,26 +13,7 @@ function AppHeader(props: IAppHeaderProps) {
     return (
         <>
             <Title order={2}>pritam.dev</Title>
-            <SimpleGrid cols={2} hidden={displayLinks}>
-                <ThemedIcon icon={AiFillGithub} link='https://github.com/pritamprasd' />
-                <ThemedIcon icon={AiFillLinkedin} link='https://www.linkedin.com/in/pritamprasd/' />
-            </SimpleGrid>
         </>
-    );
-}
-
-interface ThemedIconProps{
-    icon: IconType,
-    link: string
-}
-
-function ThemedIcon(props: ThemedIconProps){
-    return(
-        <ThemeIcon style={{backgroundColor: styles.primary_accent}}>
-            <a href={props.link} style={{color: 'inherit'}}>
-                <props.icon></props.icon>
-            </a>
-        </ThemeIcon>
     );
 }
 
