@@ -14,7 +14,6 @@ export const textEditorSlice = createSlice({
   initialState,
   reducers: {
     updateTextEditorContent: (state, action: PayloadAction<string>) => {
-      console.log('uuu')
       state.content = action.payload
     },
   },

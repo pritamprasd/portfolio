@@ -20,7 +20,7 @@ function AllPages(props: IAllPagesProp) {
             ]}>
             {Object.keys(data.pages)
                 .filter(p => p !== 'default')
-                .map(p => <PagesTile title={data.pages[p].title} icon={data.pages[p].icon}/>)
+                .map(p => <PagesTile title={data.pages[p].title} pageId={p} icon={data.pages[p].icon}/>)
             }
         </SimpleGrid>
     );
@@ -29,6 +29,7 @@ function AllPages(props: IAllPagesProp) {
 interface IPageTileProp {
     title: string;
     icon: IconType;
+    pageId: string;
 }
 
 function PagesTile(props: IPageTileProp) {
@@ -36,7 +37,7 @@ function PagesTile(props: IPageTileProp) {
     return (
         <Paper style={{
             backgroundColor: styles.primary_accent, padding: '0.5rem'
-            }} onClick={() => dispatch(updateVisiblePage(props.title))}>
+            }} onClick={() => dispatch(updateVisiblePage(props.pageId))}>
             <props.icon style={{
                 color: styles.primary_warn, 
                 backgroundColor: styles.primary_accent,
