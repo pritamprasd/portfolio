@@ -8,6 +8,7 @@ import Portfolio from '../pages/portfolio/Portfolio';
 import ProjectsPage from '../pages/projects/ProjectsPage';
 import ToolsPage from '../pages/tools/ToolsPage';
 import { RootState } from '../store';
+import AboutThisSite from '../pages/about/AboutThisSite';
 
 interface IBodyContentProps{
     activePage: string
@@ -23,6 +24,7 @@ function BodyContent(props: IBodyContentProps) {
             {currentpage === 'tools' && <ToolsPage/>}
             {currentpage === 'portfolio' && <Portfolio/>}
             {currentpage === 'music' && <Music/>}
+            {currentpage === 'about' && <AboutThisSite/>}
             {data.pages['tools'].tiles?.map(t => t.title).includes(currentpage) && <ToolsPage/>}            
         </div>
     );

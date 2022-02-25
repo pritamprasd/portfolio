@@ -3,6 +3,7 @@ import {BsFillFileEarmarkPersonFill, BsFillMusicPlayerFill} from 'react-icons/bs
 import { IconType } from 'react-icons/lib';
 import { IoMdHome } from 'react-icons/io';
 import { features } from 'process';
+import { RiFlag2Fill } from 'react-icons/ri';
 
 export const navbarTextColor:string = '#A6A7AB';
 
@@ -124,6 +125,10 @@ export const data: ProjectData = {
                     type: MusicTypes.playlist,
                 }
             ]          
+        },
+        'about':{
+            title: 'About this site',
+            icon: RiFlag2Fill,
         }
     }
 };
