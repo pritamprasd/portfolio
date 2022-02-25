@@ -2,6 +2,7 @@ import { FaTools, FaProjectDiagram } from 'react-icons/fa';
 import {BsFillFileEarmarkPersonFill, BsFillMusicPlayerFill} from 'react-icons/bs'
 import { IconType } from 'react-icons/lib';
 import { IoMdHome } from 'react-icons/io';
+import { features } from 'process';
 
 export const navbarTextColor:string = '#A6A7AB';
 
@@ -14,6 +15,7 @@ export enum MusicTypes {
 export type TileData = {
     title: string;
     description?: string;
+    features?: string[];
     id?: string;
     type?: MusicTypes;
 }
@@ -74,11 +76,22 @@ export const data: ProjectData = {
             tiles: [
                 {
                     title: 'vs-code-editor',
-                    description: 'VS Code like Editor Online. uses https://microsoft.github.io/monaco-editor/ as core'
+                    description: `VS Code like Editor Online. uses monaco-editor at core.`,
+                    features:[
+                        'Offline Web based Editor',
+                        'Uses Browser IndexDB to persist files',
+                        'Your data never leaves your browser'
+                    ]
                 },
                 {
                     title: 'copy-board',
-                    description: 'A sticky notes board for fast copy, and the good part? no data leaves your browser.'
+                    description: 'A sticky notes board for fast copy.',
+                    features:[
+                        'Easy Copy Paste while demos',
+                        'Easy note taking',
+                        'Uses Browser IndexDB to persist files',
+                        'Your data never leaves your browser'
+                    ]
                 }                
             ]
         },

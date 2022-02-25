@@ -90,12 +90,12 @@ function ProjectFilter(props: IProjectFilters) {
             {
                 Array.from(props.langs.keys()).map(l => {
                     return(
-                        <kbd style={{
+                        <div style={{
                             backgroundColor: props.langs.get(l) ? styles.primary_error : 'gray', 
-                            cursor: 'pointer',  padding: '0.15rem'
+                            cursor: 'pointer',  padding: '0.20rem', borderRadius: '0.2rem'
                         }} onClick={() => handleOnClick(l)} key={l} contentEditable={false}>
-                            {l}
-                        </kbd>
+                            {props.langs.get(l) ? <div>&#129488; {l}</div>: <div>&#128565; {l}</div>}
+                        </div>
                     );
                 })
             }
