@@ -30,6 +30,5 @@ export const navbarSlice = createSlice({
 })
 
 export const { closeNavbar, openNavbar, toogleNavbar} = navbarSlice.actions
-export const selectVisiblePage = (state: RootState) => state.pages.visiblePage
 
 export default navbarSlice

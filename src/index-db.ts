@@ -27,10 +27,17 @@ export interface IProjectData extends IBaseModel{
     languages: string[];
     projectUrl: string;
 }
+
+export interface ITextEditorFiles extends IBaseModel{
+    name: string;
+    content: string;
+}
+
 class AppStorageDb extends Dexie {    
     vscodeFiles!: Dexie.Table<IVSCodeFiles, number>;
     clipboard!: Dexie.Table<IClipboardfiles, number>;
     projects!: Dexie.Table<IProjectData, number>;
+    textEditorFiles!: Dexie.Table<ITextEditorFiles, number>;
 
     constructor () {
         super("AppStorageDB");
@@ -38,6 +45,7 @@ class AppStorageDb extends Dexie {
             vscodeFiles: '++id, &name',
             clipboard: '++id, &text',
             projects: '++id, &title, *languages',
+            textEditorFiles: '++id, &name',
         });
     }
 }
@@ -45,7 +53,8 @@ class AppStorageDb extends Dexie {
 export const normalizedTableNames: {[key: string]: string} = {
     'vscodeFiles' : 'Code Editor Saved Files',
     'clipboard' : 'Clipboard tool saved clips',
-    'projects' : 'Refresh Information on Project Page'
+    'projects' : 'Refresh Information on Project Page',
+    'textEditorFiles': 'Text Editor saved docs'
 }
 
 export const db = new AppStorageDb();

@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateVisiblePage } from '../pagesSlice';
 import { RootState } from '../../store';
 import { TiTick } from 'react-icons/ti';
+import TextEditorPage from './text-editor/TextEditor';
 
 interface IToolsProps {
 
@@ -29,6 +30,7 @@ function ToolsPage(props: IToolsProps) {
             }
             {currentpage === 'vs-code-editor' && <Editor />}
             {currentpage === 'copy-board' && <CopyBoard />}
+            {currentpage === 'text-editor' && <TextEditorPage />}
         </>
     );
 }
@@ -40,7 +42,8 @@ interface IProjectTileProps {
 function ToolsTile(props: IProjectTileProps) {
     const dispatch = useDispatch();
     return (
-        <Paper shadow="sm" padding="lg" style={{ backgroundColor: styles.primary_accent, cursor: 'pointer' }} onClick={() => dispatch(updateVisiblePage(props.data.title))}>
+        <Paper shadow="sm" padding="lg" style={{ backgroundColor: styles.primary_accent, cursor: 'pointer' }} 
+            onClick={() => dispatch(updateVisiblePage(props.data.title))}>
             <Text size="lg" weight={700} style={{ color: styles.primary_error }}>{props.data.title}</Text>
             <Text size="xs" >{props.data.description}</Text>
             <Divider style={{margin: '0.2rem'}}/>

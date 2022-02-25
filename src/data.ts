@@ -93,6 +93,15 @@ export const data: ProjectData = {
                         'Uses Browser IndexDB to persist files',
                         'Your data never leaves your browser'
                     ]
+                },
+                {
+                    title: 'text-editor',
+                    description: 'Online Text Editor',
+                    features:[
+                        'Rich Text Editor',
+                        'Uses Browser IndexDB to persist files',
+                        'Your data never leaves your browser'
+                    ]
                 }                
             ]
         },
