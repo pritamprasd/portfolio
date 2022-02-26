@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useLiveQuery } from 'dexie-react-hooks';
-import { db } from '../../../index-db';
+import { db } from '../../../storage/index-db';
 
 interface IFileListProps{
     updateCode: Function

@@ -1,6 +1,6 @@
 import { SimpleGrid, Tabs, Text } from '@mantine/core';
 import React from 'react';
-import { data, MusicTypes } from '../../data';
+import { data, MusicTypes } from '../../storage/data';
 import { RiPlayList2Fill } from 'react-icons/ri'
 
 interface ISongsProps {

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
 import { IconType } from 'react-icons/lib';
 import { useDispatch } from 'react-redux';
-import { data, navbarTextColor, styles } from '../data';
+import { data, navbarTextColor, styles } from '../storage/data';
 import { updateVisiblePage } from '../pages/pagesSlice';
 import { closeNavbar } from './navbarSlice';
 

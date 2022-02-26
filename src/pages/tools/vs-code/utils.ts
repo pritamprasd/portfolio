@@ -1,5 +1,5 @@
 import Dexie from 'dexie';
-import { db } from '../../../index-db';
+import { db } from '../../../storage/index-db';
 
 export async function addNewCodeFile(_name:string, _content:string) {
     const id = db.table("vscodeFiles").put({

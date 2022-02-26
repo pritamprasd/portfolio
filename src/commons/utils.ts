@@ -1,5 +1,5 @@
-import { data } from "./data";
-import { db } from "./index-db";
+import { data } from "../storage/data";
+import { db } from "../storage/index-db";
 
 export const loadprojects = async() => {
     const projectNames = data.pages['projects'].tiles?.map(p => p.title) || [];

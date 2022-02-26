@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai'
 import { Button, Grid, Group, Menu, Modal, SimpleGrid, Text, ThemeIcon, Title } from '@mantine/core';
 import { IconType } from 'react-icons/lib';
-import { styles } from '../data';
+import { styles } from '../storage/data';
 import { BsGearWideConnected } from 'react-icons/bs';
 import { ImBin } from 'react-icons/im';
 import { useLiveQuery } from 'dexie-react-hooks';
-import { db, normalizedTableNames } from '../index-db';
+import { db, normalizedTableNames } from '../storage/index-db';
 
 interface IAppHeaderProps {
     opened: boolean

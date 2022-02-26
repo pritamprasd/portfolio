@@ -1,11 +1,11 @@
 import { Card, Divider, List, Paper, SimpleGrid, Text, ThemeIcon } from '@mantine/core';
-import { data, styles, TileData } from '../../data';
+import { data, styles, TileData } from '../../storage/data';
 import React, { useState } from 'react';
 import { Editor } from './vs-code/Editor';
 import CopyBoard from './copy-board/CopyBoard';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateVisiblePage } from '../pagesSlice';
-import { RootState } from '../../store';
+import { RootState } from '../../store/store';
 import { TiTick } from 'react-icons/ti';
 import TextEditorPage from './text-editor/TextEditor';
 

@@ -1,9 +1,9 @@
 import { Button, Code, Divider, Group, Paper, SegmentedControl, SimpleGrid, Space, Text, Title } from '@mantine/core';
 import { useLiveQuery } from 'dexie-react-hooks';
 import React, { useEffect, useState } from 'react';
-import { data, styles, TileData } from '../../data';
-import { db, IProjectData } from '../../index-db';
-import { loadprojects } from '../../utils';
+import { data, styles, TileData } from '../../storage/data';
+import { db, IProjectData } from '../../storage/index-db';
+import { loadprojects } from '../../commons/utils';
 import { themes } from '../tools/vs-code/utils';
 
 function ProjectsPage() { 
@@ -64,7 +64,7 @@ function ProjectFilter(props: IProjectFilters) {
         props.updateActiveLangs(newLangs);
     }
     return (
-        <Group style={{bottom: '0rem' , padding: '0.5rem'}}>            
+        <Group style={{bottom: '0rem' , padding: '0.5rem', fontSize: '0.65rem'}}>            
             {
                 Array.from(props.langs.keys()).map(l => {
                     return(
@@ -77,7 +77,7 @@ function ProjectFilter(props: IProjectFilters) {
                     );
                 })
             }
-            <Button size="sm" onClick={handleUnselectAll} > Unselect All</Button>
+            <Button size="xs" onClick={handleUnselectAll} > Unselect All</Button>
         </Group>
     );
 }
@@ -98,7 +98,6 @@ function ProjectTile(props: IProjectTileProps) {
                 marginTop: '1rem',
             }}/>
             <Group style={{
-                    // bottom: '0rem',
                     margin: 'auto 0'
                 }}>
                 {Object.keys(props.projectData.languages).map((k:any) => 

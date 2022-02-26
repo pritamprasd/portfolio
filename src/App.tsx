@@ -6,7 +6,7 @@ import SideBar from './sidebar/SideBar';
 import { url } from 'inspector';
 import './index.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from './store';
+import { RootState } from './store/store';
 import { toogleNavbar } from './sidebar/navbarSlice';
 
 function App() {

@@ -2,7 +2,7 @@ import { Paper, SimpleGrid, Space, ThemeIcon, Title } from '@mantine/core';
 import React from 'react';
 import { IconType } from 'react-icons/lib';
 import { useDispatch } from 'react-redux';
-import { styles, data } from '../data';
+import { styles, data } from '../storage/data';
 import { updateVisiblePage } from '../pages/pagesSlice';
 
 interface IAllPagesProp{

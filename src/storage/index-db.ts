@@ -9,9 +9,12 @@ interface IBaseModel{
     modified_at: number;
 }
 
-interface IVSCodeFiles extends IBaseModel{
+export interface ICommonFileData extends IBaseModel{
     name: string;
     content: string;
+}
+
+interface IVSCodeFiles extends ICommonFileData{
 }
 
 interface IClipboardfiles extends IBaseModel{
@@ -28,9 +31,7 @@ export interface IProjectData extends IBaseModel{
     projectUrl: string;
 }
 
-export interface ITextEditorFiles extends IBaseModel{
-    name: string;
-    content: string;
+interface ITextEditorFiles extends ICommonFileData{
 }
 
 class AppStorageDb extends Dexie {    

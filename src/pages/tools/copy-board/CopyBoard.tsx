@@ -1,9 +1,9 @@
 import { Button, Dialog, Divider, Grid, Input, SimpleGrid, Text, TextInput } from '@mantine/core';
 import { useLiveQuery } from 'dexie-react-hooks';
 import React, { useState } from 'react';
-import { db } from '../../../index-db';
+import { db } from '../../../storage/index-db';
 import { IoMdTrash, IoMdClipboard, IoMdRemoveCircleOutline } from 'react-icons/io';
-import { styles } from '../../../data';
+import { styles } from '../../../storage/data';
 
 function CopyBoard() {
     const [clipboard, setclipboard] = useState<string>('');
