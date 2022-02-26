@@ -10,7 +10,6 @@ import { RootState } from './store';
 import { toogleNavbar } from './sidebar/navbarSlice';
 
 function App() {
-  // const [opened, setOpened] = useState(false);
   const opened = useSelector((state: RootState) => state.navbar.opened);
   const dispatch = useDispatch();
   const [activePage, setActivePage] = useState('default');

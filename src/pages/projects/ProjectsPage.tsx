@@ -1,8 +1,10 @@
-import { Button, Code, Divider, Group, Paper, SegmentedControl, SimpleGrid, Text, Title } from '@mantine/core';
+import { Button, Code, Divider, Group, Paper, SegmentedControl, SimpleGrid, Space, Text, Title } from '@mantine/core';
 import { useLiveQuery } from 'dexie-react-hooks';
 import React, { useEffect, useState } from 'react';
 import { data, styles, TileData } from '../../data';
 import { db, IProjectData } from '../../index-db';
+import { loadprojects } from '../../utils';
+import { themes } from '../tools/vs-code/utils';
 
 function ProjectsPage() { 
     const[langFilter, setlangFilter] = useState<Map<string, boolean>>();
@@ -21,30 +23,6 @@ function ProjectsPage() {
     },[allprojects]);
 
     useEffect(() => {
-        const loadprojects = async() => {
-            const projectNames = data.pages['projects'].tiles?.map(p => p.title) || [];
-            for(const name of projectNames){
-                const projectInDb:any = await db.table("projects").where("title").equalsIgnoreCase(name).toArray();
-                if(projectInDb.length === 0){
-                    const projectData = await fetch(`https://api.github.com/repos/pritamprasd/${name}`).then(r => r.json())
-                                            .catch(e => console.error("Error 1: " +JSON.stringify(e)));;
-                    console.log(`r['lang_url']: ${projectData['languages_url']}`)
-                    const projectLangs = await fetch(projectData['languages_url']).then(r => r.json())
-                                            .catch(e => console.error("Erro 1: " +JSON.stringify(e)));;
-                    console.log(`lan: ${JSON.stringify(projectLangs)}`)                    
-                    await db.table("projects").put({
-                        title: name,
-                        name: projectData['name'],
-                        description: projectData['description'],
-                        forks: projectData['forks'],
-                        languages: Object.keys(projectLangs),
-                        projectUrl: projectData['html_url'],
-                    })
-                }else{
-                    console.table(projectInDb.length)
-                }
-            }
-        }
         loadprojects();        
     }, [])   
 
@@ -110,14 +88,19 @@ interface IProjectTileProps {
 
 function ProjectTile(props: IProjectTileProps) {
     return (
-        <Paper padding="md" shadow="xs" style={{backgroundColor: styles.primary_accent}}>
+        <Paper padding="md" shadow="xs">
             <div style={{ cursor: 'pointer' }}
                 onClick={() => window.location.replace(props.projectData.projectUrl)}>
-                <Title order={3} style={{color: styles.primary_warn}}>{props.projectData.title}</Title>
+                <Title order={3} style={{color: styles.primary_accent}}>{props.projectData.title}</Title>
             </div>
             <Text size="sm">{props.projectData.description}</Text>
-            <Divider color="yellow" style={{margin: '1rem'}}/>
-            <Group style={{bottom: '0rem'}}>
+            <Divider my="xs" label="frameworks/languages" labelPosition="center" style={{
+                marginTop: '1rem',
+            }}/>
+            <Group style={{
+                    // bottom: '0rem',
+                    margin: 'auto 0'
+                }}>
                 {Object.keys(props.projectData.languages).map((k:any) => 
                     <Code style={{backgroundColor: styles.primary_error, padding: '0.1rem'}} key={props.projectData.languages[k]}>
                         {props.projectData.languages[k]}</Code>)}

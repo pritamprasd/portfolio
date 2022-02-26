@@ -42,11 +42,11 @@ interface IProjectTileProps {
 function ToolsTile(props: IProjectTileProps) {
     const dispatch = useDispatch();
     return (
-        <Paper shadow="sm" padding="lg" style={{ backgroundColor: styles.primary_accent, cursor: 'pointer' }} 
+        <Paper shadow="sm" padding="lg" style={{ cursor: 'pointer' }} 
             onClick={() => dispatch(updateVisiblePage(props.data.title))}>
             <Text size="lg" weight={700} style={{ color: styles.primary_error }}>{props.data.title}</Text>
             <Text size="xs" >{props.data.description}</Text>
-            <Divider style={{margin: '0.2rem'}}/>
+            <Divider style={{margin: '0.4rem'}} label="main features" labelPosition="center"/>
             <List size="xs" icon={
                 <ThemeIcon color="teal" size={16} radius="lg">
                     <TiTick size={14} />

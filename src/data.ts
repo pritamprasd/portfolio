@@ -143,7 +143,7 @@ export const data: ProjectData = {
 };
 
 export const styles = {
-    primary_accent: '#7865dc',
-    primary_error: '#962f5a',
-    primary_warn: '#bd9417',
+    primary_accent: '#6577B3',
+    primary_error: '#DA244B',
+    primary_warn: '#96E800',
 }

@@ -1,4 +1,4 @@
-import { Paper, SimpleGrid, ThemeIcon, Title } from '@mantine/core';
+import { Paper, SimpleGrid, Space, ThemeIcon, Title } from '@mantine/core';
 import React from 'react';
 import { IconType } from 'react-icons/lib';
 import { useDispatch } from 'react-redux';
@@ -35,14 +35,21 @@ interface IPageTileProp {
 function PagesTile(props: IPageTileProp) {
     const dispatch = useDispatch();
     return (
-        <Paper style={{
-            backgroundColor: styles.primary_accent, padding: '0.5rem'
+        <Paper shadow="xl" padding="md" radius="md" style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                margin: '1rem'
             }} onClick={() => dispatch(updateVisiblePage(props.pageId))}>
             <props.icon style={{
-                color: styles.primary_warn, 
-                backgroundColor: styles.primary_accent,
+                color: styles.primary_error,
+                height: '40%',
+                width: '40%',
+                marginBottom: '2rem'
             }}/>
-            <Title order={2} style={{color: styles.primary_error}}>{props.title}</Title>
+            <Title order={2} style={{color: styles.primary_accent}}>{props.title}</Title>
         </Paper>
     );
 }
