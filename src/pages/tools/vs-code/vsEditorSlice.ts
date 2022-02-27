@@ -24,12 +24,10 @@ export const codeEditorSlice = createSlice({
     forceUpdateCodeEditorContent: (state, action: PayloadAction<string>) => {
       state.content = action.payload;
       state.editorLang = detectLanguage(action.payload)
-      console.log(`language updated: ${state.editorLang}`)
       state.forceUpdate = !state.forceUpdate;
     },
     updateEditorLag: (state,  action: PayloadAction<string>) => {
       state.editorLang = action.payload
-      console.log(`language updated 2: ${state.editorLang}`)
     }
   },
 })
