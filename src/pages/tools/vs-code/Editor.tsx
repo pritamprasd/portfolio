@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { addNewCodeFile, languages, themes } from './utils';
+import { languages, themes } from './utils';
 import * as monaco from 'monaco-editor';
 import { Code, Divider, Grid, Space, Text } from '@mantine/core';
 import FileManager from '../../../components/FileManager';
@@ -11,7 +11,6 @@ import { detectLanguage } from '../../../commons/utils';
 
 export const Editor = () => {
     const divEl = useRef<HTMLDivElement>(null);
-    const [filename, setFilename] = useState<string>('')
     const editorLang = useSelector((state: RootState) => state.vseditor.editorLang);
     const [editorTheme, setEditorTheme] = useState(themes[1])
     const [editorInstance, setEditorInstance] = useState<monaco.editor.IStandaloneCodeEditor>();
@@ -68,11 +67,12 @@ export const Editor = () => {
                 {themes.map(l => <option value={l}>{l}</option>)}
             </select>
             <Text>Detected Language:     
-                <Code style={{backgroundColor: styles.primary_error}}>
+                <Code key={editorInstance?.getModel()?.getLanguageId()} 
+                      style={{backgroundColor: styles.primary_error}}>
                     {editorInstance?.getModel()?.getLanguageId()}
                 </Code>
             </Text>
-            <Divider style={{padding: '1rem'}}/>
+            <Divider/>
              <Grid style={{width: '100%', height: '100%'}}>
                 <Grid.Col sm={8} span={12}>
                     <div className="Editor" ref={divEl} style={{width: '100%', height: '70vh'}}/>

@@ -28,6 +28,11 @@ export const loadprojects = async() => {
 
 export const detectLanguage = (code:string) => {
     var detectLang = require('lang-detector');
+    try {
+        JSON.parse(code);
+        return 'json';
+    } catch (error) {
+    }
     return detectLang(code).toLowerCase();
 }
 
