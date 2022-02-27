@@ -1,5 +1,6 @@
 import { data } from "../storage/data";
 import { db } from "../storage/index-db";
+import YAML from 'yaml';
 // import { detectLang } from 'lang-detector';
 
 
@@ -34,5 +35,15 @@ export const detectLanguage = (code:string) => {
     } catch (error) {
     }
     return detectLang(code).toLowerCase();
+}
+
+export const jsonToYaml = (json: string) => {
+    const doc = new YAML.Document();
+    try {
+        doc.contents = JSON.parse(json);
+        return doc.toString();
+    } catch (error) {
+        return `Error: ${JSON.stringify(error)}`
+    }
 }
 
