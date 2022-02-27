@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { db, ICommonFileData } from '../storage/index-db';
 import { useLiveQuery } from 'dexie-react-hooks';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { AiFillDelete } from 'react-icons/ai';
 import { styles } from '../storage/data';
+import { Button, TextInput } from '@mantine/core';
+import { RootState } from '../store/store';
 
 interface IFileManagerProps {
     tableName: string;
     updateEditorContent: Function;
+    content: string;
 }
+
 function FileManager(p: IFileManagerProps) {
+    const [filename, setFilename] = useState<string>('newfile.txt');
     let allfiles = useLiveQuery(
         () => db.table(p.tableName).toArray()
     );
@@ -18,6 +23,23 @@ function FileManager(p: IFileManagerProps) {
             {allfiles?.map(f => <FileTiles files={f}
                 updateEditorContent={p.updateEditorContent}
                 tableName={p.tableName} />)}
+            <div style={{display: 'flex', flexDirection: 'row', margin: '0.5rem'}}>
+                {console.log(`content update: ${p.content}`)}
+                <TextInput placeholder='Filename' required 
+                    onChange={(e) => setFilename(e.target.value)}/>
+                <Button style={{width: '8rem', marginLeft: '0.2rem'}} 
+                   onClick={() => {
+                       console.log(`saving new dile: ${p.content}`)
+                        db.table(p.tableName).put({
+                            name: filename,
+                            content: p.content,
+                            is_deleted: false,
+                            created_at: Date.now(),
+                            modified_at: Date.now()
+                        });
+                   }} >
+                Save</Button>
+            </div>
         </div>
     );
 }

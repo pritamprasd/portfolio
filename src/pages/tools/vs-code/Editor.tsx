@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { addNewCodeFile, languages, themes } from './utils';
-import { FileList } from './filelist';
 import * as monaco from 'monaco-editor';
 import { Grid } from '@mantine/core';
 import FileManager from '../../../components/FileManager';
@@ -65,12 +64,12 @@ export const Editor = () => {
         <div>
              <Grid style={{width: '100%', height: '100%'}}>
                 <Grid.Col sm={8} span={12}>
-                    {/* {editorInstance.setValue(code)} */}
                     <div className="Editor" ref={divEl} style={{width: '100%', height: '70vh'}}/>
                 </Grid.Col>
                 <Grid.Col sm={4} span={12}>
                     <FileManager tableName='vscodeFiles' 
                                  updateEditorContent={forceUpdateCodeEditorContent}
+                                 content={contentFromStore}
                     />
                 </Grid.Col>
             </Grid>
@@ -81,10 +80,6 @@ export const Editor = () => {
                 <option value=''>Update Theme</option>
                 {themes.map(l => <option value={l}>{l}</option>)}
             </select>
-            <input type="text" value={filename} 
-                   onChange={(e) => setFilename(e.target.value)}></input>
-            <button onClick={saveCodeFile}>Save</button>
-            <FileList updateCode={updateCode} />
         </div>
     );
 };

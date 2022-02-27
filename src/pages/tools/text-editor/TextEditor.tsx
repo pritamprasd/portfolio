@@ -5,49 +5,39 @@ import { db } from '../../../storage/index-db';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../store/store';
 import { updateTextEditorContent } from './textEditorSlice';
-import { RiDeleteBackFill } from 'react-icons/ri';
 import FileManager from '../../../components/FileManager';
 
 
 function TextEditorPage() {
+    const content = useSelector((state: RootState) => state.texteditor.content);
     return (
         <Grid style={{width: '100%', height: '100%'}}>
-            <Grid.Col sm={8} span={12}><TextEditor/></Grid.Col>
+            <Grid.Col sm={8} span={12}><TextEditor content={content}/></Grid.Col>
             <Grid.Col sm={4} span={12}><FileManager tableName='textEditorFiles' 
                                                     updateEditorContent={updateTextEditorContent}
+                                                    content={content}
                                         /></Grid.Col>
         </Grid>
     );
 }
 
 interface ITextEditorProps{
+    content: string
 }
-function TextEditor(props: ITextEditorProps) {
-    const content = useSelector((state: RootState) => state.texteditor.content);
-    const [editorContent, setEditorContent] = useState(content || '');
-    useEffect(()=> {
-        setEditorContent(content);
-    }, [content])
-    const [filename, setFilename] = useState('newfile.txt');
+function TextEditor(p: ITextEditorProps) {
+    const [editorContent, setEditorContent] = useState(p.content || '');
     const dispatch = useDispatch();
+    function setEditorContentExternal(e: string){
+        console.log(`onchnage text editor happended : ${e}`)
+        setEditorContent(e);
+        dispatch(updateTextEditorContent(e));
+    }
+    useEffect(()=> {
+        setEditorContent(p.content);
+    }, [p.content])
     return (
         <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-            <RichTextEditor value={editorContent} onChange={setEditorContent} />
-            <div style={{display: 'flex', flexDirection: 'row', margin: '0.5rem'}}>
-                <TextInput placeholder='Filename' required 
-                    onChange={(e) => setFilename(e.target.value)}/>
-                <Button style={{width: '8rem', marginLeft: '0.2rem'}} 
-                   onClick={() => {
-                        db.table('textEditorFiles').put({
-                            name: filename,
-                            content: editorContent,
-                            is_deleted: false,
-                            created_at: Date.now(),
-                            modified_at: Date.now()
-                        });
-                   }} >
-                Save</Button>
-            </div>
+            <RichTextEditor value={editorContent} onChange={(e) => setEditorContentExternal(e.toString())} />
         </div>
     );
 }

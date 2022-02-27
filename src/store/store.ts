@@ -8,8 +8,8 @@ export const store = configureStore({
   reducer: {
     pages: pagesSlice.reducer,
     navbar: navbarSlice.reducer,
-    texteditor: textEditorSlice.reducer,
     vseditor: codeEditorSlice.reducer,
+    texteditor: textEditorSlice.reducer,
   },
 })
 
