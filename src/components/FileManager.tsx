@@ -22,9 +22,9 @@ function FileManager(p: IFileManagerProps) {
         <div style={{ display: 'flex', flexDirection: 'column' }}>
             {allfiles?.map(f => <FileTiles files={f}
                 updateEditorContent={p.updateEditorContent}
+                key={f.name}
                 tableName={p.tableName} />)}
             <div style={{display: 'flex', flexDirection: 'row', margin: '0.5rem'}}>
-                {console.log(`content update: ${p.content}`)}
                 <TextInput placeholder='Filename' required 
                     onChange={(e) => setFilename(e.target.value)}/>
                 <Button style={{width: '8rem', marginLeft: '0.2rem'}} 

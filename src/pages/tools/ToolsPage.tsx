@@ -52,7 +52,7 @@ function ToolsTile(props: IProjectTileProps) {
                     <TiTick size={14} />
                 </ThemeIcon>
             }>
-                {props.data.features?.map(f => <List.Item>{f}</List.Item>)}
+                {props.data.features?.map(f => <List.Item key={f}>{f}</List.Item>)}
             </List>
         </Paper>
     );

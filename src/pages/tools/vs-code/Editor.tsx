@@ -1,16 +1,17 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { addNewCodeFile, languages, themes } from './utils';
 import * as monaco from 'monaco-editor';
-import { Grid } from '@mantine/core';
+import { Divider, Grid, Text } from '@mantine/core';
 import FileManager from '../../../components/FileManager';
-import { forceUpdateCodeEditorContent, updateCodeEditorContent } from './vsEditorSlice';
+import { forceUpdateCodeEditorContent, updateCodeEditorContent, updateEditorLag } from './vsEditorSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../store/store';
 
 export const Editor = () => {
     const divEl = useRef<HTMLDivElement>(null);
     const [filename, setFilename] = useState<string>('')
-    const [editorLang, setEditorLang] = useState(languages[0])
+    // const [editorLang, setEditorLang] = useState(languages[0])
+    const editorLang = useSelector((state: RootState) => state.vseditor.editorLang);
     const [editorTheme, setEditorTheme] = useState(themes[1])
     const [editorInstance, setEditorInstance] = useState<monaco.editor.IStandaloneCodeEditor>();
     const contentFromStore = useSelector((state: RootState) => state.vseditor.content);
@@ -54,7 +55,7 @@ export const Editor = () => {
         editorInstance?.setValue(localStorage.getItem('code') || '');
     }
     function onLangChange(e:any) {
-        setEditorLang(e.target.value);
+        dispatch(updateEditorLag(e.target.value))
     }
     function onThemeChange(e:any) {
         setEditorTheme(e.target.value);
@@ -62,6 +63,15 @@ export const Editor = () => {
     
     return (
         <div>
+            <select onClick={onLangChange}>
+                {languages.map(l => <option value={l}>{l}</option>)}
+            </select>
+            <select onClick={onThemeChange}>
+                <option value=''>Update Theme</option>
+                {themes.map(l => <option value={l}>{l}</option>)}
+            </select>
+            <Text>Language: {JSON.stringify(editorInstance?.getModel()?.getLanguageId())}</Text>
+            <Divider style={{padding: '1rem'}}/>
              <Grid style={{width: '100%', height: '100%'}}>
                 <Grid.Col sm={8} span={12}>
                     <div className="Editor" ref={divEl} style={{width: '100%', height: '70vh'}}/>
@@ -73,13 +83,6 @@ export const Editor = () => {
                     />
                 </Grid.Col>
             </Grid>
-            <select onClick={onLangChange}>
-                {languages.map(l => <option value={l}>{l}</option>)}
-            </select>
-            <select onClick={onThemeChange}>
-                <option value=''>Update Theme</option>
-                {themes.map(l => <option value={l}>{l}</option>)}
-            </select>
         </div>
     );
 };

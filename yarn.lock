@@ -5855,6 +5855,13 @@ klona@^2.0.4, klona@^2.0.5:
   resolved "https://registry.yarnpkg.com/klona/-/klona-2.0.5.tgz#d166574d90076395d9963aa7a928fabb8d76afbc"
   integrity sha512-pJiBpiXMbt7dkzXe8Ghj/u4FfXOOa98fPW+bihOJ4SjnoijweJrNThJfd3ifXpXhREjpoF2mZVH1GfS9LV3kHQ==
 
+lang-detector@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/lang-detector/-/lang-detector-1.0.6.tgz#96157ea7e702f19778f1ef6488c593ebf7511fa2"
+  integrity sha1-lhV+p+cC8Zd48e9kiMWT6/dRH6I=
+  dependencies:
+    underscore "^1.8.2"
+
 language-subtag-registry@~0.3.2:
   version "0.3.21"
   resolved "https://registry.yarnpkg.com/language-subtag-registry/-/language-subtag-registry-0.3.21.tgz#04ac218bea46f04cb039084602c6da9e788dd45a"
@@ -8548,6 +8555,11 @@ unbox-primitive@^1.0.1:
     has-bigints "^1.0.1"
     has-symbols "^1.0.2"
     which-boxed-primitive "^1.0.2"
+
+underscore@^1.8.2:
+  version "1.13.2"
+  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.13.2.tgz#276cea1e8b9722a8dbed0100a407dda572125881"
+  integrity sha512-ekY1NhRzq0B08g4bGuX4wd2jZx5GnKz6mKSqFL4nqBlfyMGiG10gDFhDTMEfYmDL6Jy0FUIZp7wiRB+0BP7J2g==
 
 unicode-canonical-property-names-ecmascript@^2.0.0:
   version "2.0.0"

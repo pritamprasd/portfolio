@@ -1,5 +1,7 @@
 import { data } from "../storage/data";
 import { db } from "../storage/index-db";
+// import { detectLang } from 'lang-detector';
+
 
 export const loadprojects = async() => {
     const projectNames = data.pages['projects'].tiles?.map(p => p.title) || [];
@@ -23,3 +25,9 @@ export const loadprojects = async() => {
         }
     }
 }
+
+export const detectLanguage = (code:string) => {
+    var detectLang = require('lang-detector');
+    return detectLang(code).toLowerCase();
+}
+
