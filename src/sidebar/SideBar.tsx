@@ -16,10 +16,10 @@ function SideBar(props: ISideBarProps) {
     return (
         <div style={{display: 'flex', flexDirection: 'column', color: navbarTextColor, height: '100vh'}}>
             {/* <Links pageName='default' clickedPage={props.clickedPage}/> */}
-            {Object.keys(data.pages).map(p => <Links pageName={p} clickedPage={props.clickedPage}/>)}
+            {Object.keys(data.pages).map(p => <Links key={p} pageName={p} clickedPage={props.clickedPage}/>)}
             <SimpleGrid cols={2} style={{marginTop: 'auto', justifyItems: 'center'}}>
-                <ThemedIcon icon={AiFillGithub} link='https://github.com/pritamprasd' />
-                <ThemedIcon icon={AiFillLinkedin} link='https://www.linkedin.com/in/pritamprasd/' />
+                <ThemedIcon key={'11111'} icon={AiFillGithub} link='https://github.com/pritamprasd' />
+                <ThemedIcon key={'22222'}  icon={AiFillLinkedin} link='https://www.linkedin.com/in/pritamprasd/' />
             </SimpleGrid>
         </div>
     );

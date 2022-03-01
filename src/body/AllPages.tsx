@@ -20,7 +20,7 @@ function AllPages(props: IAllPagesProp) {
             ]}>
             {Object.keys(data.pages)
                 .filter(p => p !== 'default')
-                .map(p => <PagesTile title={data.pages[p].title} pageId={p} icon={data.pages[p].icon}/>)
+                .map(p => <PagesTile title={data.pages[p].title} pageId={p} key={p} icon={data.pages[p].icon}/>)
             }
         </SimpleGrid>
     );

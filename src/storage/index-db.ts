@@ -29,6 +29,7 @@ export interface IProjectData extends IBaseModel{
     forks: number;
     languages: string[];
     projectUrl: string;
+    username: string;
 }
 
 interface ITextEditorFiles extends ICommonFileData{
@@ -45,7 +46,7 @@ class AppStorageDb extends Dexie {
         this.version(1).stores({
             vscodeFiles: '++id, &name',
             clipboard: '++id, &text',
-            projects: '++id, &title, *languages',
+            projects: '++id, &title, username, *languages',
             textEditorFiles: '++id, &name',
         });
     }
