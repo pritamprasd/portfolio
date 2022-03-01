@@ -1,11 +1,13 @@
 import { FaTools, FaProjectDiagram } from 'react-icons/fa';
-import {BsFillFileEarmarkPersonFill, BsFillMusicPlayerFill} from 'react-icons/bs'
+import { BsFillFileEarmarkPersonFill, BsFillMusicPlayerFill } from 'react-icons/bs'
 import { IconType } from 'react-icons/lib';
 import { IoMdHome } from 'react-icons/io';
 import { features } from 'process';
 import { RiFlag2Fill } from 'react-icons/ri';
+import { jsonBeautify, jsonToYaml } from '../commons/transformers/json_tx';
+import { yamlToJson } from '../commons/transformers/yaml_tx';
 
-export const navbarTextColor:string = '#A6A7AB';
+export const navbarTextColor: string = '#A6A7AB';
 
 export enum MusicTypes {
     playlist,
@@ -34,7 +36,7 @@ export type ProjectData = {
 
 export const data: ProjectData = {
     pages: {
-        'default':{
+        'default': {
             title: 'Home',
             icon: IoMdHome,
         },
@@ -78,7 +80,7 @@ export const data: ProjectData = {
                 {
                     title: 'vs-code-editor',
                     description: `VS Code like Editor Online. uses monaco-editor at core.`,
-                    features:[
+                    features: [
                         'Offline Web based Editor',
                         'Uses Browser IndexDB to persist files',
                         'Your data never leaves your browser'
@@ -87,7 +89,7 @@ export const data: ProjectData = {
                 {
                     title: 'copy-board',
                     description: 'A sticky notes board for fast copy.',
-                    features:[
+                    features: [
                         'Easy Copy Paste while demos',
                         'Easy note taking',
                         'Uses Browser IndexDB to persist files',
@@ -97,22 +99,22 @@ export const data: ProjectData = {
                 {
                     title: 'text-editor',
                     description: 'Online Text Editor',
-                    features:[
+                    features: [
                         'Rich Text Editor',
                         'Uses Browser IndexDB to persist files',
                         'Your data never leaves your browser'
                     ]
-                }                
+                }
             ]
         },
-        'portfolio':{
+        'portfolio': {
             title: 'Portfolio',
-            icon: BsFillFileEarmarkPersonFill,            
+            icon: BsFillFileEarmarkPersonFill,
         },
-        'music':{
+        'music': {
             title: 'Playlists',
             icon: BsFillMusicPlayerFill,
-            tiles:[
+            tiles: [
                 {
                     title: 'Tripieee',
                     id: 'PLzvYkgxrd_WsvgGWs3BTspFgUwtoRLxTW',
@@ -133,14 +135,42 @@ export const data: ProjectData = {
                     id: 'PLzvYkgxrd_WvDHGn5Xcz2JsterXSWkIUO',
                     type: MusicTypes.playlist,
                 }
-            ]          
+            ]
         },
-        'about':{
+        'about': {
             title: 'About this site',
             icon: RiFlag2Fill,
         }
     }
 };
+
+export type Transformers = {
+    [lang: string]: {
+        [operation: string]: {
+            executor: Function,
+            output: string
+        };
+    }
+}
+
+export const transformers: Transformers = {
+    'json': {
+        'To Yaml': {
+            executor: jsonToYaml,
+            output: 'yaml'
+        },
+        'Beautify': {
+            executor: jsonBeautify,
+            output: 'json'
+        },
+    },
+    'yaml': {
+        'To Json': {
+            executor: yamlToJson,
+            output: 'json'
+        }
+    }
+}
 
 export const styles = {
     primary_accent: '#6577B3',

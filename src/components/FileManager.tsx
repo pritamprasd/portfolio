@@ -18,27 +18,36 @@ function FileManager(p: IFileManagerProps) {
     let allfiles = useLiveQuery(
         () => db.table(p.tableName).toArray()
     );
+    const handleKeydown = (e:any) => {
+        if (e.keyCode == 13) {
+            saveFile();
+            setFilename('');
+        }
+    }
+    const saveFile = () => {
+        console.log(`saving new file: ${p.content}`)
+        db.table(p.tableName).put({
+            name: filename,
+            content: p.content,
+            is_deleted: false,
+            created_at: Date.now(),
+            modified_at: Date.now()
+        });
+    }
     return (
         <div style={{ display: 'flex', flexDirection: 'column' }}>
             {allfiles?.map(f => <FileTiles files={f}
                 updateEditorContent={p.updateEditorContent}
                 key={f.name}
                 tableName={p.tableName} />)}
-            <div style={{display: 'flex', flexDirection: 'row', margin: '0.5rem'}}>
-                <TextInput placeholder='Filename' required 
-                    onChange={(e) => setFilename(e.target.value)}/>
-                <Button style={{width: '8rem', marginLeft: '0.2rem'}} 
-                   onClick={() => {
-                       console.log(`saving new dile: ${p.content}`)
-                        db.table(p.tableName).put({
-                            name: filename,
-                            content: p.content,
-                            is_deleted: false,
-                            created_at: Date.now(),
-                            modified_at: Date.now()
-                        });
-                   }} >
-                Save</Button>
+            <div style={{ display: 'flex', flexDirection: 'row', margin: '0.5rem' }}>
+                <TextInput placeholder='Filename' required
+                    value={filename}
+                    onChange={(e) => setFilename(e.target.value)} 
+                    onKeyDown={handleKeydown}/>
+                <Button style={{ width: '8rem', marginLeft: '0.2rem' }}
+                    onClick={saveFile} >
+                    Save</Button>
             </div>
         </div>
     );
@@ -61,7 +70,7 @@ function FileTiles(p: IFileTileProps) {
             }}>
                 {p.files.name}
             </div>
-            <AiFillDelete style={{ 
+            <AiFillDelete style={{
                 color: styles.primary_error,
                 cursor: 'pointer'
             }} onClick={() => db.table(p.tableName).delete(p.files.id || bigInvalidId)} />

@@ -1,14 +1,15 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { languages, themes } from './utils';
 import * as monaco from 'monaco-editor';
-import { Button, Code, Divider, Drawer, Grid, Select, SimpleGrid, Space, Text } from '@mantine/core';
+import { Button, Code, Drawer, Grid, Select, Text } from '@mantine/core';
 import FileManager from '../../../components/FileManager';
 import { forceUpdateCodeEditorContent, updateCodeEditorContent, updateEditorLag } from './vsEditorSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../store/store';
-import { styles } from '../../../storage/data';
-import { detectLanguage, jsonToYaml } from '../../../commons/utils';
+import { styles, transformers } from '../../../storage/data';
+import { detectLanguage } from '../../../commons/utils';
 import { Prism } from '@mantine/prism';
+import type { Language } from 'prism-react-renderer';
 
 export const Editor = () => {
     const divEl = useRef<HTMLDivElement>(null);
@@ -19,6 +20,8 @@ export const Editor = () => {
     const forceUpdate = useSelector((state: RootState) => state.vseditor.forceUpdate);
     const dispatch = useDispatch();
     const [drawerOpened, setdrawerOpened] = useState<boolean>(false);
+    const [transformer, setTransformer] = useState<string>('');
+    const [magicOutputLang, setMagicOutputLang] = useState<string>(editorLang);
 
     useEffect(() => {
         if (editorInstance !== null) {
@@ -99,17 +102,21 @@ export const Editor = () => {
                 title={`Language Detected: ${editorLang}`} padding="xl" size="90vh" position="bottom">
                 <Grid style={{ width: '100%', height: '100%' }}>
                     <Grid.Col sm={5} span={12}>
-                        <Prism language="json" withLineNumbers scrollAreaComponent="div">{contentFromStore}</Prism>
+                        <Prism language={editorLang as Language} withLineNumbers scrollAreaComponent="div">{contentFromStore}</Prism>
                     </Grid.Col>
                     <Grid.Col sm={2} span={12}>
                         <div style={{display: 'flex', flexDirection: 'column', 
                                       alignItems: 'center', justifyContent: 'flex-start', rowGap: '1rem'}}>
-                            <Button>To Yaml</Button>
-                            <Button>Inline</Button>
+                            {Object.keys(transformers[editorLang] || {})?.map(k =>
+                                <Button onClick={() => {
+                                    setTransformer(transformers[editorLang][k].executor(contentFromStore))
+                                    setMagicOutputLang(transformers[editorLang][k].output)
+                                }}>{k}</Button>
+                            )}
                         </div>
                     </Grid.Col>
                     <Grid.Col sm={5} span={12}>
-                        <Prism language="yaml" withLineNumbers>{jsonToYaml(contentFromStore)}</Prism>
+                        <Prism language={magicOutputLang as Language} withLineNumbers>{transformer}</Prism>
                     </Grid.Col>
                 </Grid>
             </Drawer>
