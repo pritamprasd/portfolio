@@ -49,7 +49,10 @@ function PagesTile(props: IPageTileProp) {
                 width: '40%',
                 marginBottom: '2rem'
             }}/>
-            <Title order={2} style={{color: styles.primary_accent}}>{props.title}</Title>
+            <Title order={2} style={{
+                color: styles.primary_accent, 
+                textShadow: '0 0 32px rgb(192 219 255 / 25%), 0 0 16px rgb(65 120 255 / 24%)'
+            }}>{props.title}</Title>
         </Paper>
     );
 }

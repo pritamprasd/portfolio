@@ -9,7 +9,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { updateGithubUsername } from './projectsSlice';
 
-function ProjectsPage() {
+interface IProjectsPageProps{
+    queryHidden: boolean;
+}
+
+function ProjectsPage(p: IProjectsPageProps) {
     const username = useSelector((state: RootState) => state.projects.githubUsername);
     const [userNameInput, setuserNameInput] = useState<string>(username);
     const [langFilter, setlangFilter] = useState<Map<string, boolean>>();
@@ -20,7 +24,7 @@ function ProjectsPage() {
     );
 
     useEffect(() => {
-        const lans: string[] = allprojects?.filter(p => p.username === userNameInput)
+        const lans: string[] = allprojects?.filter(p => p.username.toUpperCase() === userNameInput.toUpperCase())
             .flatMap((p: IProjectData) => [...p.languages]) || [];
         const distinct_langs = lans.filter((item, pos) => lans.indexOf(item) == pos);
         const m: Map<string, boolean> = new Map();
@@ -36,11 +40,13 @@ function ProjectsPage() {
 
     const handleGithubUsernamChange = (e: any) => {
         if (e.keyCode == 13) {
+            console.log(`handleGithubUsernamChange clicked!`)
             dispatch(updateGithubUsername(userNameInput));
         }
     }
 
     return (<>
+        {p.queryHidden === false &&
         <div style={{ display: 'flex', flexDirection: 'row', width: '100%', alignItems: 'center', 
                     justifyContent: 'flex-start', marginBottom: '1rem', marginRight: '1rem'}}>
             <Text>Github Username: </Text>
@@ -51,7 +57,8 @@ function ProjectsPage() {
                 style={{marginLeft: 'auto'}}>
                 Search your projects</Button>
         </div>
-        <Divider style={{ padding: '0.25rem', marginTop: '0.25rem' }} />
+        }
+        {p.queryHidden === false && <Divider style={{ padding: '0.25rem', marginTop: '0.25rem' }} />}
         <ProjectFilter langs={langFilter || new Map()} updateActiveLangs={setlangFilter} />
         <Divider style={{ padding: '0.25rem' }} />
         <SimpleGrid cols={4}

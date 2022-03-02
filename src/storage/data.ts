@@ -79,10 +79,12 @@ export const data: ProjectData = {
             tiles: [
                 {
                     title: 'vs-code-editor',
-                    description: `VS Code like Editor Online. uses monaco-editor at core.`,
+                    description: `VS Code like Online Editor. uses monaco-editor at core.`,
                     features: [
                         'Offline Web based Editor',
-                        'Uses Browser IndexDB to persist files',
+                        'Auto language detection',
+                        'just paste and convert with Magic button',
+                        'File Browser: Uses Browser IndexDB to persist files',
                         'Your data never leaves your browser'
                     ]
                 },
@@ -101,7 +103,17 @@ export const data: ProjectData = {
                     description: 'Online Text Editor',
                     features: [
                         'Rich Text Editor',
-                        'Uses Browser IndexDB to persist files',
+                        'File Browser: Uses Browser IndexDB to persist files',
+                        'Your data never leaves your browser'
+                    ]
+                },
+                {
+                    title: 'github-projects-analyzer',
+                    description: 'Pulls up Github Public data for a username, and allows set of analytics on it.',
+                    features: [
+                        'Get your github public repositories in one-click',
+                        'Filters: Allow you to filter repos based on language used',
+                        'All data persisted in indexDb table for further analytics',
                         'Your data never leaves your browser'
                     ]
                 }

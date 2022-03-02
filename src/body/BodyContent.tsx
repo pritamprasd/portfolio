@@ -20,11 +20,12 @@ function BodyContent(props: IBodyContentProps) {
     return (
         <div>
             {currentpage === 'default' && <AllPages/>}
-            {currentpage === 'projects' && <ProjectsPage/>}
+            {currentpage === 'projects' && <ProjectsPage queryHidden={true}/>}
             {currentpage === 'tools' && <ToolsPage/>}
             {currentpage === 'portfolio' && <Portfolio/>}
             {currentpage === 'music' && <Music/>}
             {currentpage === 'about' && <AboutThisSite/>}
+            {currentpage === 'github-projects-analyzer' && <ProjectsPage queryHidden={false}/>}
             {data.pages['tools'].tiles?.map(t => t.title).includes(currentpage) && <ToolsPage/>}            
         </div>
     );
