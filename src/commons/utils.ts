@@ -67,7 +67,7 @@ export const detectLanguage = (code: string) => {
         return 'json';
     } catch (error) {
     }
-    if(isYaml(code)){
+    if(isYaml(code) && code.includes(":")){
         return 'yaml'
     }
     return detectLang(code).toLowerCase();

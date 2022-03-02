@@ -3,11 +3,9 @@ import YAML from 'yaml';
 export const yamlToJson = (input: string) => {
     const yaml = YAML.parse(input);
     try {
-        console.log(`yaml obj: `)
-        console.table(yaml)
         return JSON.stringify(yaml, null, 2);
     } catch (error) {
-        console.log(`EEE: ${error} | ${input}`)
+        console.log(`yamlToJson: ${error} | ${input}`)
         return JSON.stringify(error);
     }
      
