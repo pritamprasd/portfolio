@@ -83,7 +83,7 @@ export const Editor = () => {
                 <Text style={{ marginLeft: 'auto', marginRight: '0' }}>Detected Language:
                     <Code key={editorInstance?.getModel()?.getLanguageId()}
                         style={{ backgroundColor: styles.primary_error }}>
-                        {editorInstance?.getModel()?.getLanguageId()}
+                        {editorLang}
                     </Code>
                 </Text>
             </div>

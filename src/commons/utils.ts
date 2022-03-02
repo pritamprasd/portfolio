@@ -1,5 +1,6 @@
 import { data } from "../storage/data";
 import { db } from "../storage/index-db";
+import { isValidJwt } from "./transformers/jwt_tx";
 import { isYaml } from "./transformers/yaml_tx";
 // import { detectLang } from 'lang-detector';
 
@@ -61,7 +62,6 @@ async function checkResponse(response: any) {
 }
 
 export const detectLanguage = (code: string) => {
-    var detectLang = require('lang-detector');
     try {
         JSON.parse(code);
         return 'json';
@@ -70,6 +70,11 @@ export const detectLanguage = (code: string) => {
     if(isYaml(code) && code.includes(":")){
         return 'yaml'
     }
-    return detectLang(code).toLowerCase();
+    if(isValidJwt(code)){
+        return 'jwt'
+    }
+    var detectLang = require('lang-detector');
+    const lang = detectLang(code).toLowerCase();
+    return lang === 'unknown' ? 'plaintext': lang;
 }
 

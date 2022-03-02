@@ -6,6 +6,7 @@ import { features } from 'process';
 import { RiFlag2Fill } from 'react-icons/ri';
 import { jsonBeautify, jsonToYaml } from '../commons/transformers/json_tx';
 import { yamlToJson } from '../commons/transformers/yaml_tx';
+import { parseJwt, parseJwtHeader } from '../commons/transformers/jwt_tx';
 
 export const navbarTextColor: string = '#A6A7AB';
 
@@ -179,6 +180,16 @@ export const transformers: Transformers = {
     'yaml': {
         'To Json': {
             executor: yamlToJson,
+            output: 'json'
+        }
+    },
+    'jwt': {
+        'Parse Payload': {
+            executor: parseJwt,
+            output: 'json'
+        },
+        'Parse Header': {
+            executor: parseJwtHeader,
             output: 'json'
         }
     }
