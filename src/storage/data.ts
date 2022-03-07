@@ -22,6 +22,7 @@ export type TileData = {
     features?: string[];
     id?: string;
     type?: MusicTypes;
+    name?: string;
 }
 
 export type ProjectData = {
@@ -80,6 +81,7 @@ export const data: ProjectData = {
             tiles: [
                 {
                     title: 'vs-code-editor',
+                    name: 'Offline Code Editor',
                     description: `VS Code like Online Editor. uses monaco-editor at core.`,
                     features: [
                         'Offline Web based Editor',
@@ -90,7 +92,18 @@ export const data: ProjectData = {
                     ]
                 },
                 {
+                    title: 'text-editor',
+                    name: 'Offline Rich Text Editor',
+                    description: 'Brower based Rich Text Editor',
+                    features: [
+                        'Rich Text Editor',
+                        'File Browser: Uses Browser IndexDB to persist files',
+                        'Your data never leaves your browser'
+                    ]
+                },
+                {
                     title: 'copy-board',
+                    name: 'Copy Paste Utility',
                     description: 'A sticky notes board for fast copy.',
                     features: [
                         'Easy Copy Paste while demos',
@@ -100,16 +113,8 @@ export const data: ProjectData = {
                     ]
                 },
                 {
-                    title: 'text-editor',
-                    description: 'Online Text Editor',
-                    features: [
-                        'Rich Text Editor',
-                        'File Browser: Uses Browser IndexDB to persist files',
-                        'Your data never leaves your browser'
-                    ]
-                },
-                {
                     title: 'github-projects-analyzer',
+                    name: 'Github Projects Analyzer',
                     description: 'Pulls up Github Public data for a username, and allows set of analytics on it.',
                     features: [
                         'Get your github public repositories in one-click',

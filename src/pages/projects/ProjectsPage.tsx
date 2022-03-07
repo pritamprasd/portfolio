@@ -20,11 +20,18 @@ function ProjectsPage(p: IProjectsPageProps) {
     const dispatch = useDispatch();
 
     let allprojects = useLiveQuery(
-        () => db.table("projects").toArray()
+        () => {
+            try {
+                return db.table("projects").toArray()
+            } catch (error) {
+                console.log('IndexDB Error: '+ JSON.stringify(error));
+                throw error;
+            }
+        }
     );
 
     useEffect(() => {
-        const lans: string[] = allprojects?.filter(p => p.username.toUpperCase() === userNameInput.toUpperCase())
+        const lans: string[] = allprojects?.filter(p => p.username?.toUpperCase() === userNameInput?.toUpperCase())
             .flatMap((p: IProjectData) => [...p.languages]) || [];
         const distinct_langs = lans.filter((item, pos) => lans.indexOf(item) == pos);
         const m: Map<string, boolean> = new Map();

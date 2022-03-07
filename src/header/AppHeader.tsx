@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai'
+import { BiRefresh } from 'react-icons/bi'
 import { Button, Grid, Group, Menu, Modal, SimpleGrid, Text, ThemeIcon, Title } from '@mantine/core';
 import { IconType } from 'react-icons/lib';
 import { styles } from '../storage/data';
@@ -13,10 +13,14 @@ interface IAppHeaderProps {
 }
 
 function AppHeader(props: IAppHeaderProps) {
-    const [opened, setOpened] = useState(false);
+    const [openDeleteTables, setOpenDeleteTablesModal] = useState(false);
+    const [openClearIndexDB, setOpenClearIndexDB] = useState(false);
     return (<>
-        <Modal centered opened={opened} onClose={() =>  setOpened(false)} title="Delete data from IndexDb Tables &#10071;&#10071;&#10071;" size="lg">
-            <DeleteIndexDbModal/>
+        <Modal centered opened={openDeleteTables} onClose={() =>  setOpenDeleteTablesModal(false)} title="Delete data from IndexDb Tables &#10071;&#10071;&#10071;" size="lg">
+            <DeleteTables/>
+        </Modal>
+        <Modal centered opened={openClearIndexDB} onClose={() =>  setOpenClearIndexDB(false)} title="Refresh IndexDB" size="sm">
+            <ClearIndexDB/>
         </Modal>
         <Title order={2}>pritam.dev</Title>
         <Menu delay={500} size="md" style={{ 
@@ -24,13 +28,32 @@ function AppHeader(props: IAppHeaderProps) {
             marginLeft: 'auto',
             }}>
             <Menu.Label>Site Settings</Menu.Label>
-            <Menu.Item icon={<ImBin />} onClick={() => setOpened(true)}>Clear IndexDB</Menu.Item>
+            <Menu.Item icon={<ImBin />} onClick={() => setOpenDeleteTablesModal(true)}
+                style={{padding: '0.5rem'}}
+            >Clear Data</Menu.Item>
+            <Menu.Item icon={<BiRefresh />} onClick={() => setOpenClearIndexDB(true)}
+                style={{padding: '0.5rem'}}
+            >Refresh IndexDB</Menu.Item>
         </Menu>
     </>
     );
 }
 
-function DeleteIndexDbModal() {
+function ClearIndexDB() {
+    const onRefreshButtonClick = async() => {
+        await db.delete();
+        alert('IndexDB Refreshed!!!');
+        window.location.reload();
+    }
+    return (
+        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', rowGap: '1rem'}}>
+            <Text color='red' size='lg'>Caution: This will erase all saved data!!!</Text>
+            <Button onClick={onRefreshButtonClick}>Refresh IndexDB</Button>
+        </div>
+    );
+}
+
+function DeleteTables() {
     let allTables = useLiveQuery(
         () => db.tables
     );

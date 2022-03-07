@@ -44,7 +44,7 @@ function ToolsTile(props: IProjectTileProps) {
     return (
         <Paper shadow="sm" padding="lg" style={{ cursor: 'pointer' }} 
             onClick={() => dispatch(updateVisiblePage(props.data.title))}>
-            <Text size="lg" weight={700} style={{ color: styles.primary_error }}>{props.data.title}</Text>
+            <Text size="lg" weight={700} style={{ color: styles.primary_error }}>{props.data.name}</Text>
             <Text size="xs" >{props.data.description}</Text>
             <Divider style={{margin: '0.4rem'}} label="main features" labelPosition="center"/>
             <List size="xs" icon={
