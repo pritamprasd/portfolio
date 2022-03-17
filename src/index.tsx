@@ -24,7 +24,7 @@ function IndexPage() {
   useEffect(()=>{
     const params = new URLSearchParams(window.location.search);
     const page = params.get('p');
-    dispath(updateVisiblePage(getPageName(page || 'landing-page')))
+    dispath(updateVisiblePage(getPageName(page || 'landing')))
   }, []);
 
   return (

@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { data, navbarTextColor, styles } from '../storage/data';
 import { updateVisiblePage } from '../pages/pagesSlice';
 import { closeNavbar } from './navbarSlice';
+import { GrDocumentPerformance } from 'react-icons/gr';
 
 interface ISideBarProps {
     activePage: string;
@@ -17,9 +18,10 @@ function SideBar(props: ISideBarProps) {
         <div style={{display: 'flex', flexDirection: 'column', color: navbarTextColor, height: '100vh'}}>
             {/* <Links pageName='default' clickedPage={props.clickedPage}/> */}
             {Object.keys(data.pages).map(p => <Links key={p} pageName={p} clickedPage={props.clickedPage}/>)}
-            <SimpleGrid cols={2} style={{marginTop: 'auto', justifyItems: 'center'}}>
+            <SimpleGrid cols={3} style={{marginTop: 'auto', justifyItems: 'center'}}>
                 <ThemedIcon key={'11111'} icon={AiFillGithub} link='https://github.com/pritamprasd' />
                 <ThemedIcon key={'22222'}  icon={AiFillLinkedin} link='https://www.linkedin.com/in/pritamprasd/' />
+                <ThemedIcon key={'22222'}  icon={GrDocumentPerformance} link='https://bit.ly/pritamprasad'/>
             </SimpleGrid>
         </div>
     );
