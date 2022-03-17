@@ -28,9 +28,9 @@ function ToolsPage(props: IToolsProps) {
                     {data.pages['tools'].tiles?.map(t => <ToolsTile key={t.title} data={t} />)}
                 </SimpleGrid>
             }
-            {currentpage === 'vs-code-editor' && <Editor />}
-            {currentpage === 'copy-board' && <CopyBoard />}
-            {currentpage === 'text-editor' && <TextEditorPage />}
+            {currentpage === 'vs-code-editor' && <Editor key={currentpage}/>}
+            {currentpage === 'copy-board' && <CopyBoard key={currentpage}/>}
+            {currentpage === 'text-editor' && <TextEditorPage key={currentpage}/>}
         </>
     );
 }

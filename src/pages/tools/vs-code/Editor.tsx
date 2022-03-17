@@ -10,6 +10,7 @@ import { styles, transformers } from '../../../storage/data';
 import { detectLanguage } from '../../../commons/utils';
 import { Prism } from '@mantine/prism';
 import type { Language } from 'prism-react-renderer';
+import './Editor.css';
 
 export const Editor = () => {
     const divEl = useRef<HTMLDivElement>(null);
@@ -64,23 +65,21 @@ export const Editor = () => {
     }
     return (
         <div>
-            <div style={{
-                display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center',
-                paddingBottom: '1rem', paddingRight: '1rem'
-            }}>
+            <div className="vs-editor-toolbar" style={{ paddingBottom: '1rem', paddingRight: '1rem'}}>
                 <Select onClick={onLangChange} placeholder='Language' data={languages.map(l => {
                     return { label: l, value: l }
                 })} value={editorLang} onChange={e => dispatch(updateEditorLag(e || ''))}
+                style={{width: '8rem'}}
                 />
                 <Select onClick={onThemeChange} placeholder="Theme" data={themes.map(l => {
                     return { label: l, value: l }
                 })} value={editorLang} onChange={e => setEditorTheme(e || '')}
-                    style={{ padding: '0.5rem' }}
+                    style={{ padding: '0.5rem', width: '6rem' }}
                 />
                 <Button onClick={() => setdrawerOpened(true)} style={{
                     marginRight: '0.5rem'
                 }}>Magic</Button>
-                <Text style={{ marginLeft: 'auto', marginRight: '0' }}>Detected Language:
+                <Text className="languageName" style={{ marginLeft: 'auto', marginRight: '0' }}>Detected Language:
                     <Code key={editorInstance?.getModel()?.getLanguageId()}
                         style={{ backgroundColor: styles.primary_error }}>
                         {editorLang}
