@@ -28,7 +28,7 @@ function IndexPage() {
         xl: 1400,
       }
     }}>
-      {currentpage === 'default' && <MainApp />}
+      {currentpage != 'landing-page'  && <MainApp />}
       {currentpage === 'landing-page' && <LandingPage />}
     </MantineProvider>
   );
