@@ -6,7 +6,7 @@ export interface PagesState {
 }
 
 const initialState: PagesState = {
-    visiblePage: 'default',
+    visiblePage: 'landing-page',
 }
 
 export const pagesSlice = createSlice({

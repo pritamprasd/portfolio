@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from './store/store';
 import { toogleNavbar } from './sidebar/navbarSlice';
 
-function App() {
+function MainApp() {
   const opened = useSelector((state: RootState) => state.navbar.opened);
   const dispatch = useDispatch();
   const [activePage, setActivePage] = useState('default');
@@ -44,4 +44,4 @@ function App() {
 }
 
 
-export default App;
+export default MainApp;
