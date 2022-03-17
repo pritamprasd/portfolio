@@ -217,6 +217,9 @@ export const getPageName = (page:string) => {
             return 'text-editor'
         case 'copy':
             return 'copy-board';
+        case 'github':
+        case 'projects':
+            return 'projects';
         default:
             return 'default';
     }
