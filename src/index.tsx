@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import MainApp from './MainApp';
 import { MantineProvider } from '@mantine/core';
-import { Provider, useSelector } from 'react-redux';
+import { Provider, useDispatch, useSelector } from 'react-redux';
 import { RootState, store } from './store/store';
 import LandingPage from './LandingPage';
+import { updateVisiblePage } from './pages/pagesSlice';
+import { getPageName } from './storage/data';
 
 
 ReactDOM.render(
@@ -16,7 +18,15 @@ ReactDOM.render(
 );
 
 function IndexPage() {
-  const currentpage = useSelector((state: RootState) => state.pages.visiblePage)
+  const dispath = useDispatch();
+  const currentpage = useSelector((state: RootState) => state.pages.visiblePage);
+
+  useEffect(()=>{
+    const params = new URLSearchParams(window.location.search);
+    const page = params.get('p');
+    dispath(updateVisiblePage(getPageName(page || 'landing-page')))
+  }, []);
+
   return (
     <MantineProvider theme={{
       colorScheme: 'dark',

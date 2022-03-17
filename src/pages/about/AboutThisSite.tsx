@@ -36,13 +36,18 @@ function AboutThisSite() {
                 <List.Item>Dexie lib: https://github.com/dexie/Dexie.js</List.Item>
             </List>
             <Divider style={{padding: '0.3rem', margin: '0.3rem'}}/>
+            <Text>Bookmarks</Text>
+            <List>
+                <List.Item>Code Editor: <a href='/?p=editor'>pritam.dev/?p=editor</a></List.Item>
+                <List.Item>Text Editor: <a href='/?p=text-editor'>pritam.dev/?p=text-editor</a></List.Item>
+                <List.Item>Copy Board: <a href='/?p=copy'>pritam.dev/?p=copy</a></List.Item>
+            </List>
+            <Divider style={{padding: '0.3rem', margin: '0.3rem'}}/>
             <Text color="dimmed">
                 <Text><SiMinutemailer/> mail: mail@pritam.dev</Text>
                 <Text><CgWebsite/> site: pritam.dev</Text>
                 <Text><AiFillGithub/> github: github.com/pritamprasd</Text>
-            </Text>
-            
-            
+            </Text>            
         </div>
     );
 }

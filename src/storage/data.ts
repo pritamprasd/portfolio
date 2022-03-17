@@ -205,3 +205,19 @@ export const styles = {
     primary_error: '#DA244B',
     primary_warn: '#96E800',
 }
+
+
+export const getPageName = (page:string) => {
+    switch (page) {
+        case 'landing':
+            return 'landing-page';
+        case 'editor':
+            return 'vs-code-editor';
+        case 'text-editor':
+            return 'text-editor'
+        case 'copy':
+            return 'copy-board';
+        default:
+            return 'default';
+    }
+}
