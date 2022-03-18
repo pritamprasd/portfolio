@@ -21,7 +21,7 @@ function SideBar(props: ISideBarProps) {
             <SimpleGrid cols={3} style={{marginTop: 'auto', justifyItems: 'center'}}>
                 <ThemedIcon key={'11111'} icon={AiFillGithub} link='https://github.com/pritamprasd' />
                 <ThemedIcon key={'22222'}  icon={AiFillLinkedin} link='https://www.linkedin.com/in/pritamprasd/' />
-                <ThemedIcon key={'33333'}  icon={GrDocumentPerformance} link='https://bit.ly/pritamprasad'/>
+                {/* <ThemedIcon key={'33333'}  icon={GrDocumentPerformance} link='https://bit.ly/pritamprasad'/> */}
             </SimpleGrid>
         </div>
     );
