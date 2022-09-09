@@ -37,7 +37,7 @@
         "yaml": "^1.10.2"
     },
     "scripts": {
-        "dev-start": "react-scripts start",
+        "dev_start": "react-scripts start",
         "start": "serve -s build",
         "build": "react-scripts build",
         "test": "react-scripts test",

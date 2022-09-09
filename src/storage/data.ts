@@ -2,7 +2,6 @@ import { FaTools, FaProjectDiagram } from 'react-icons/fa';
 import { BsFillFileEarmarkPersonFill, BsFillMusicPlayerFill } from 'react-icons/bs'
 import { IconType } from 'react-icons/lib';
 import { IoMdHome } from 'react-icons/io';
-import { features } from 'process';
 import { RiFlag2Fill } from 'react-icons/ri';
 import { jsonBeautify, jsonToYaml } from '../commons/transformers/json_tx';
 import { yamlToJson } from '../commons/transformers/yaml_tx';

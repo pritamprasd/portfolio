@@ -6,7 +6,6 @@ import { useDispatch } from 'react-redux';
 import { data, navbarTextColor, styles } from '../storage/data';
 import { updateVisiblePage } from '../pages/pagesSlice';
 import { closeNavbar } from './navbarSlice';
-import { GrDocumentPerformance } from 'react-icons/gr';
 
 interface ISideBarProps {
     activePage: string;
@@ -50,8 +49,8 @@ interface ISidebarlinkProp{
 
 function Links(props: ISidebarlinkProp) {
     const dispatch = useDispatch();
-    const [title, setTitle] = useState<string>(data.pages[props.pageName].title);
-    const [linkIcon, setLinkIcon] = useState<IconType>(data.pages[props.pageName].icon);
+    const [title] = useState<string>(data.pages[props.pageName].title);
+    const [linkIcon] = useState<IconType>(data.pages[props.pageName].icon);
     return (
         <div style={{cursor: 'pointer', display: 'flex', flexDirection:'row', alignItems: 'center'}} 
         onClick={() => {

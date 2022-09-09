@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { BiRefresh } from 'react-icons/bi'
-import { Button, Grid, Group, Menu, Modal, SimpleGrid, Text, ThemeIcon, Title } from '@mantine/core';
-import { IconType } from 'react-icons/lib';
+import { Button, Menu, Modal, Text, Title } from '@mantine/core';
 import { styles } from '../storage/data';
 import { FcDeleteDatabase } from 'react-icons/fc';
 import { ImBin } from 'react-icons/im';

@@ -1,10 +1,9 @@
-import { Button, Code, Divider, Group, Paper, SegmentedControl, SimpleGrid, Space, Text, TextInput, Title } from '@mantine/core';
+import { Button, Code, Divider, Group, Paper, SimpleGrid, Text, TextInput, Title } from '@mantine/core';
 import { useLiveQuery } from 'dexie-react-hooks';
 import React, { useEffect, useState } from 'react';
-import { data, styles, TileData } from '../../storage/data';
+import { styles } from '../../storage/data';
 import { db, IProjectData } from '../../storage/index-db';
 import { loadprojects } from '../../commons/utils';
-import { themes } from '../tools/vs-code/utils';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { updateGithubUsername } from './projectsSlice';
@@ -33,7 +32,7 @@ function ProjectsPage(p: IProjectsPageProps) {
     useEffect(() => {
         const lans: string[] = allprojects?.filter(p => p.username?.toUpperCase() === userNameInput?.toUpperCase())
             .flatMap((p: IProjectData) => [...p.languages]) || [];
-        const distinct_langs = lans.filter((item, pos) => lans.indexOf(item) == pos);
+        const distinct_langs = lans.filter((item, pos) => lans.indexOf(item) === pos);
         const m: Map<string, boolean> = new Map();
         for (const l of distinct_langs) {
             m.set(l, true);
@@ -46,7 +45,7 @@ function ProjectsPage(p: IProjectsPageProps) {
     }, [username]);
 
     const handleGithubUsernamChange = (e: any) => {
-        if (e.keyCode == 13) {
+        if (e.keyCode === 13) {
             console.log(`handleGithubUsernamChange clicked!`)
             dispatch(updateGithubUsername(userNameInput));
         }
@@ -79,7 +78,7 @@ function ProjectsPage(p: IProjectsPageProps) {
                 ?.filter(p => Object.entries(p.languages)
                     .map(([_, l]) => l)
                     .filter((l: any) => langFilter?.get(l))
-                    .length != 0)
+                    .length !== 0)
                 .filter(p => p.username === username)
                 .map(p => <ProjectTile key={p.title} projectData={p} />)
             }

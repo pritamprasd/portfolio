@@ -27,7 +27,7 @@ function Music(props: ISongsProps) {
 const Artists = () => {
     return(
         <SimpleGrid cols={4}>
-        {data.pages['music'].tiles?.filter(m => m.type == MusicTypes.artist)
+        {data.pages['music'].tiles?.filter(m => m.type === MusicTypes.artist)
             .map(m => createYoutubePlaylistIframe(m.id, "300", m.title))}
     </SimpleGrid>
     );
@@ -36,7 +36,7 @@ const Artists = () => {
 const IndividualSongs = () => {
     return (
         <SimpleGrid cols={4}>
-            {data.pages['music'].tiles?.filter(m => m.type == MusicTypes.song)
+            {data.pages['music'].tiles?.filter(m => m.type === MusicTypes.song)
                 .map(m => createYoutubePlaylistIframe(m.id, "300", m.title))}
         </SimpleGrid>
     );
@@ -51,7 +51,7 @@ const Playlist = () => {
                 { maxWidth: 1160, cols: 2, spacing: 'md' },
                 { maxWidth: 640, cols: 1, spacing: 'lg' },
             ]}>
-            {data.pages['music'].tiles?.filter(m => m.type == MusicTypes.playlist)
+            {data.pages['music'].tiles?.filter(m => m.type === MusicTypes.playlist)
                 .map(m => createYoutubePlaylistIframe(m.id, "400", m.title))}
         </SimpleGrid>
     );

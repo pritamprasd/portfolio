@@ -1,4 +1,4 @@
-import { Paper, SimpleGrid, Space, ThemeIcon, Title } from '@mantine/core';
+import { Paper, SimpleGrid, Title } from '@mantine/core';
 import React from 'react';
 import { IconType } from 'react-icons/lib';
 import { useDispatch } from 'react-redux';

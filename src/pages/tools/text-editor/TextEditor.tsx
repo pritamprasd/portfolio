@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { RichTextEditor } from '@mantine/rte';
-import { Button, Grid, SimpleGrid, Text, TextInput } from '@mantine/core';
-import { db } from '../../../storage/index-db';
+import { Grid} from '@mantine/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../store/store';
 import { updateTextEditorContent } from './textEditorSlice';

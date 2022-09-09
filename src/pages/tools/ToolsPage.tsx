@@ -1,6 +1,6 @@
-import { Card, Divider, List, Paper, SimpleGrid, Text, ThemeIcon } from '@mantine/core';
+import { Divider, List, Paper, SimpleGrid, Text, ThemeIcon } from '@mantine/core';
 import { data, styles, TileData } from '../../storage/data';
-import React, { useState } from 'react';
+import React from 'react';
 import { Editor } from './vs-code/Editor';
 import CopyBoard from './copy-board/CopyBoard';
 import { useDispatch, useSelector } from 'react-redux';
