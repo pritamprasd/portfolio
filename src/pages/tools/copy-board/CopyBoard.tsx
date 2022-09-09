@@ -1,8 +1,8 @@
-import { Button, Dialog, Divider, Grid, Input, Paper, SimpleGrid, Text, TextInput, useMantineTheme } from '@mantine/core';
+import { Button, Dialog, Divider, Grid, Paper, Text, TextInput, useMantineTheme } from '@mantine/core';
 import { useLiveQuery } from 'dexie-react-hooks';
 import React, { useState } from 'react';
 import { db } from '../../../storage/index-db';
-import { IoMdTrash, IoMdClipboard, IoMdRemoveCircleOutline } from 'react-icons/io';
+import { IoMdTrash, IoMdClipboard } from 'react-icons/io';
 import { styles } from '../../../storage/data';
 import { BsTrash } from 'react-icons/bs';
 
@@ -12,7 +12,7 @@ function CopyBoard() {
         () => db.table("clipboard").toArray()
     );
     const handleInputKeyDown = (e: any) => {
-        if (e.keyCode == 13) {
+        if (e.keyCode === 13) {
             db.table("clipboard").put({
                 text: e.target.value,
                 is_deleted: false,

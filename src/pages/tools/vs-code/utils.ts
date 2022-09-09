@@ -1,4 +1,3 @@
-import Dexie from 'dexie';
 import { db } from '../../../storage/index-db';
 
 export async function addNewCodeFile(_name:string, _content:string) {
@@ -9,6 +8,7 @@ export async function addNewCodeFile(_name:string, _content:string) {
         created_at: Date.now(),
         modified_at: Date.now()
     });
+    console.log(`New File Saved, id: ${id}`)
 }
 
 export function getAllCode() {    

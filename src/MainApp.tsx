@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { AppShell, Burger, Header, MediaQuery, Navbar, Text, ThemeIcon, Title, useMantineTheme } from '@mantine/core';
+import { AppShell, Burger, Header, MediaQuery, Navbar, useMantineTheme } from '@mantine/core';
 import AppHeader from './header/AppHeader';
 import BodyContent from './body/BodyContent';
 import SideBar from './sidebar/SideBar';
-import { url } from 'inspector';
 import './index.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from './store/store';

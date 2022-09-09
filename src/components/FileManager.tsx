@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { db, ICommonFileData } from '../storage/index-db';
 import { useLiveQuery } from 'dexie-react-hooks';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { AiFillDelete } from 'react-icons/ai';
 import { styles } from '../storage/data';
 import { Button, TextInput } from '@mantine/core';
-import { RootState } from '../store/store';
 
 interface IFileManagerProps {
     tableName: string;
@@ -19,7 +18,7 @@ function FileManager(p: IFileManagerProps) {
         () => db.table(p.tableName).toArray()
     );
     const handleKeydown = (e:any) => {
-        if (e.keyCode == 13) {
+        if (e.keyCode === 13) {
             saveFile();
             setFilename('');
         }

@@ -1,4 +1,3 @@
-import { Button, Grid } from '@mantine/core';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { updateVisiblePage } from './pages/pagesSlice';

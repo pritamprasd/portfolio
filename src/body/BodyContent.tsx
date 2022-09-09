@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
-import { data, styles } from '../storage/data';
+import { data } from '../storage/data';
 import AllPages from './AllPages';
 import Music from '../pages/music/Music';
-import { selectVisiblePage } from '../pages/pagesSlice';
 import Portfolio from '../pages/portfolio/Portfolio';
 import ProjectsPage from '../pages/projects/ProjectsPage';
 import ToolsPage from '../pages/tools/ToolsPage';
